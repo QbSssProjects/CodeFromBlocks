@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>Form1.cs</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<style type="text/css">
+.s0 { color: #6c95eb;}
+.s1 { color: #d0d0d0;}
+.s2 { color: #bdbdbd;}
+.s3 { color: #85c46c; font-style: italic;}
+.s4 { color: #c9a26d;}
+</style>
+</head>
+<body bgcolor="#262626">
+<table CELLSPACING=0 CELLPADDING=5 COLS=1 WIDTH="100%" BGCOLOR="#606060" >
+<tr><td><center>
+<font face="Arial, Helvetica" color="#000000">
+Form1.cs</font>
+</center></td></tr></table>
+<pre><span class="s0">using </span><span class="s1">System</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Collections</span><span class="s2">.</span><span class="s1">Generic</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">ComponentModel</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Data</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Diagnostics</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Drawing</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Linq</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Reflection</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Text</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Threading</span><span class="s2">.</span><span class="s1">Tasks</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Windows</span><span class="s2">.</span><span class="s1">Forms</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Runtime</span><span class="s2">.</span><span class="s1">InteropServices</span><span class="s2">;</span>
+<span class="s0">using </span><span class="s1">System</span><span class="s2">.</span><span class="s1">Windows</span><span class="s2">;</span>
+
+<span class="s0">namespace </span><span class="s1">WindowsFormsApp2</span>
+<span class="s2">{</span>
+    <span class="s0">public </span><span class="s1">partial </span><span class="s0">class </span><span class="s1">Form1 : Form</span>
+    <span class="s2">{</span>
+        
+        
+        <span class="s0">private string </span><span class="s1">name</span><span class="s2">;</span>
+        <span class="s0">private int </span><span class="s1">vart</span><span class="s2">;</span>
+        
+        <span class="s0">public </span><span class="s1">Form1</span><span class="s2">(</span><span class="s0">string </span><span class="s1">name</span><span class="s2">, </span><span class="s0">int </span><span class="s1">vart</span><span class="s2">) </span>
+        <span class="s2">{ </span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">name </span><span class="s2">= </span><span class="s1">name</span><span class="s2">;</span>
+            <span class="s0">this</span><span class="s2">.</span><span class="s1">vart </span><span class="s2">= </span><span class="s1">vart</span><span class="s2">;</span>
+        <span class="s2">} </span>
+        <span class="s0">private readonly </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Form1</span><span class="s2">&gt; </span><span class="s1">vars </span><span class="s2">= </span><span class="s0">new </span><span class="s1">List</span><span class="s2">&lt;</span><span class="s1">Form1</span><span class="s2">&gt;();</span>
+
+        <span class="s0">public </span><span class="s1">Form1</span><span class="s2">()</span>
+        <span class="s2">{</span>
+            
+           
+            <span class="s3">//this.txtBox.Location = new System.Drawing.Point(40, 25);</span>
+
+            <span class="s1">InitializeComponent</span><span class="s2">();</span>
+        <span class="s2">}</span>
+
+        
+
+
+        <span class="s0">private void </span><span class="s1">newVar_Click</span><span class="s2">(</span><span class="s0">object </span><span class="s1">sender</span><span class="s2">, </span><span class="s1">EventArgs e</span><span class="s2">)</span>
+        <span class="s2">{</span>
+
+
+            <span class="s1">TextBox nazwa </span><span class="s2">= </span><span class="s0">new </span><span class="s1">TextBox</span><span class="s2">();</span>
+            
+            <span class="s1">MessageBox</span><span class="s2">.</span><span class="s1">Show</span><span class="s2">(</span><span class="s4">&quot;button1 was clicked&quot;</span><span class="s2">);</span>
+            <span class="s3">//throw new System.NotImplementedException();</span>
+        <span class="s2">}</span>
+
+
+        
+    <span class="s2">}</span>
+
+    
+<span class="s2">}</span></pre>
+</body>
+</html>
