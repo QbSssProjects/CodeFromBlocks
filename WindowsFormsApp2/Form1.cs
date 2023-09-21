@@ -69,18 +69,13 @@ namespace WindowsFormsApp2
             var sampleTxt = new TextBox();
             newButton.Location = new Point(400, 20);
             newButton.Width = 80;
-            sampleTxt.Width = 30;   
+            sampleTxt.Width = 30;
             newButton.Controls.Add(sampleTxt);
             panel1.Controls.Add(newButton);
-            
+
 
             //throw new System.NotImplementedException();
 
         }
-        private void btn_Click(object sender, EventArgs e) {
-            MessageBox.Show("hello world");
-        }
- 
-       
     }
 }
