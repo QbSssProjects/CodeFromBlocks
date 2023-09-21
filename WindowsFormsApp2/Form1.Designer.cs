@@ -74,6 +74,7 @@
             this.setvar.TabIndex = 1;
             this.setvar.Text = "Ustaw zmienna";
             this.setvar.UseVisualStyleBackColor = true;
+            this.setvar.Click += new System.EventHandler(this.setvar_Click);
             // 
             // delVar
             // 
@@ -284,7 +285,7 @@
             // 
             // panel1
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Desktop;
+            this.panel1.BackColor = System.Drawing.SystemColors.GrayText;
             this.panel1.Controls.Add(this.ifElse);
             this.panel1.Controls.Add(this.endBlocks);
             this.panel1.Controls.Add(this.startBlocks);
@@ -310,7 +311,7 @@
             this.panel1.Controls.Add(this.newVar);
             this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1061, 632);
+            this.panel1.Size = new System.Drawing.Size(1060, 632);
             this.panel1.TabIndex = 24;
             // 
             // Form1

@@ -22,6 +22,7 @@ namespace WindowsFormsApp2
         private string name;
         private int vart;
         List<Form1> vars = new List<Form1>();
+        private static readonly int SEARCH_BUTTON_WIDTH = 25;
         
         public Form1(string name, int vart) 
         { 
@@ -50,14 +51,36 @@ namespace WindowsFormsApp2
             
             vars.Add(new Form1(varName, varVar));
             
-            Console.Out.WriteLine("nazwa: " + vars[newVarIterator].name + " o wartości: " + vars[newVarIterator].vart);
+            Console.Out.WriteLine("[ID: " + newVarIterator + "]" + " nazwa: " + vars[newVarIterator].name + " o wartości: " + vars[newVarIterator].vart);
             newVarIterator++;
             
             
             
-
             //throw new System.NotImplementedException();
             
         }
+
+
+        private void setvar_Click(object sender, EventArgs e)
+        {
+
+            var newButton = new Button();
+            newButton.Text = "aaa";
+            var sampleTxt = new TextBox();
+            newButton.Location = new Point(400, 20);
+            newButton.Width = 80;
+            sampleTxt.Width = 30;   
+            newButton.Controls.Add(sampleTxt);
+            panel1.Controls.Add(newButton);
+            
+
+            //throw new System.NotImplementedException();
+
+        }
+        private void btn_Click(object sender, EventArgs e) {
+            MessageBox.Show("hello world");
+        }
+ 
+       
     }
 }
