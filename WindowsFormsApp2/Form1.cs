@@ -19,10 +19,11 @@ namespace WindowsFormsApp2
     public partial class Form1 : Form
     {
         private int newVarIterator = 0;
-        private string name;
+        private String name;
         private int vart;
         List<Form1> vars = new List<Form1>();
-        private static readonly int SEARCH_BUTTON_WIDTH = 25;
+        private string[] varsTable = new String[500];
+        
         
         public Form1(string name, int vart) 
         { 
@@ -50,27 +51,33 @@ namespace WindowsFormsApp2
             MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar );
             
             vars.Add(new Form1(varName, varVar));
+            varsTable[newVarIterator] = vars[newVarIterator].name + ": " + vars[newVarIterator].vart;
             
             Console.Out.WriteLine("[ID: " + newVarIterator + "]" + " nazwa: " + vars[newVarIterator].name + " o wartości: " + vars[newVarIterator].vart);
+            
             newVarIterator++;
+
             
             
-            
+
+
             //throw new System.NotImplementedException();
-            
+
         }
 
-
+//TODO: OGARNIJ TO ABY W listBox wszystkie elemeny  z listy zadelklarowanej dawał
+//TODO: Jak wpiszesz w googla "listbox c# documentation" to powiniwenes wszystko wiedziec SIEMA 
         private void setvar_Click(object sender, EventArgs e)
         {
 
             var newButton = new Button();
             newButton.Text = "aaa";
-            var sampleTxt = new TextBox();
+            var listBox = new ComboBox();
             newButton.Location = new Point(400, 20);
-            newButton.Width = 80;
-            sampleTxt.Width = 30;
-            newButton.Controls.Add(sampleTxt);
+            newButton.Width = 400;
+            listBox.Width = 200;
+            listBox.Items.AddRange(varsTable);
+            newButton.Controls.Add(listBox);
             panel1.Controls.Add(newButton);
 
 
