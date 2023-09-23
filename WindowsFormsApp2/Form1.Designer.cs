@@ -30,7 +30,7 @@
         private void InitializeComponent()
         {
             this.newVar = new System.Windows.Forms.Button();
-            this.setvar = new System.Windows.Forms.Button();
+            this.setVar = new System.Windows.Forms.Button();
             this.delVar = new System.Windows.Forms.Button();
             this.AddTo = new System.Windows.Forms.Button();
             this.SubstractFrom = new System.Windows.Forms.Button();
@@ -66,15 +66,15 @@
             this.newVar.UseVisualStyleBackColor = true;
             this.newVar.Click += new System.EventHandler(this.newVar_Click);
             // 
-            // setvar
+            // setVar
             // 
-            this.setvar.Location = new System.Drawing.Point(12, 59);
-            this.setvar.Name = "setvar";
-            this.setvar.Size = new System.Drawing.Size(161, 23);
-            this.setvar.TabIndex = 1;
-            this.setvar.Text = "Ustaw zmienna";
-            this.setvar.UseVisualStyleBackColor = true;
-            this.setvar.Click += new System.EventHandler(this.setvar_Click);
+            this.setVar.Location = new System.Drawing.Point(12, 59);
+            this.setVar.Name = "setVar";
+            this.setVar.Size = new System.Drawing.Size(161, 23);
+            this.setVar.TabIndex = 1;
+            this.setVar.Text = "Ustaw zmienna";
+            this.setVar.UseVisualStyleBackColor = true;
+            this.setVar.Click += new System.EventHandler(this.setVar_Click);
             // 
             // delVar
             // 
@@ -307,7 +307,7 @@
             this.panel1.Controls.Add(this.SubstractFrom);
             this.panel1.Controls.Add(this.AddTo);
             this.panel1.Controls.Add(this.delVar);
-            this.panel1.Controls.Add(this.setvar);
+            this.panel1.Controls.Add(this.setVar);
             this.panel1.Controls.Add(this.newVar);
             this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
@@ -358,7 +358,7 @@
         private System.Windows.Forms.MaskedTextBox maskedTextBox1;
 
         private System.Windows.Forms.Button newVar;
-        private System.Windows.Forms.Button setvar;
+        private System.Windows.Forms.Button setVar;
         private System.Windows.Forms.Button delVar;
         private System.Windows.Forms.Button AddTo;
         private System.Windows.Forms.Button modulo;
