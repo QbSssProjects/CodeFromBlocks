@@ -18,6 +18,7 @@ namespace WindowsFormsApp2
 {
     public partial class Form1 : Form
     {
+        ComboBox listBox = new ComboBox();
         private int newVarIterator = 0;
         private String name;
         private int vart;
@@ -25,6 +26,8 @@ namespace WindowsFormsApp2
         private string[] varsTable = new String[500];
         
         
+
+
         public Form1(string name, int vart) 
         { 
             this.name = name;
@@ -43,7 +46,6 @@ namespace WindowsFormsApp2
         
         private void newVar_Click(object sender, EventArgs e)
         {
-
             
             string varName = Microsoft.VisualBasic.Interaction.InputBox("Podaj nazwę zmiennej ", "Tworzenie zmiennej" );
             int varVar = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość zmiennej", "Tworzenie zmiennej" ));
@@ -57,32 +59,46 @@ namespace WindowsFormsApp2
             
             newVarIterator++;
 
-            
-            
+            //throw new System.NotImplementedException();
+           
+        }
 
+//TODO: OGARNIJ TO ABY W listBox wszystkie elemeny  z listy zadelklarowanej dawał //*
+//TODO: Jak wpiszesz w googla "listbox c# documentation" to powiniwenes wszystko wiedziec SIEMA //*
+        void setvar_Click(object sender, EventArgs e)
+        {
 
+            
+            listBox.Location = new Point(400, 20);
+            listBox.Width = 200;
+            panel1.Controls.Add(listBox);
+            listBox.DataSource = varsTable;
+            
+            listBox.Click += new System.EventHandler(listBox_Click);
+            
             //throw new System.NotImplementedException();
 
         }
 
-//TODO: OGARNIJ TO ABY W listBox wszystkie elemeny  z listy zadelklarowanej dawał
-//TODO: Jak wpiszesz w googla "listbox c# documentation" to powiniwenes wszystko wiedziec SIEMA 
-        private void setvar_Click(object sender, EventArgs e)
+        private void listBox_Click(object sender, EventArgs e)
         {
+            listBox.DroppedDown = true;
+            listBox.DataSource = null;
+            listBox.DataSource = varsTable;
 
-            var newButton = new Button();
-            newButton.Text = "aaa";
-            var listBox = new ComboBox();
-            newButton.Location = new Point(400, 20);
-            newButton.Width = 400;
-            listBox.Width = 200;
-            listBox.Items.AddRange(varsTable);
-            newButton.Controls.Add(listBox);
-            panel1.Controls.Add(newButton);
+        }
+        
 
-
-            //throw new System.NotImplementedException();
-
+        
+    }
+    public class Variable
+    {
+        public string Name { get; set; }
+        public int Value { get; set; }
+        public Variable(string name, int value)
+        {
+            Name = name;
+            Value = value;
         }
     }
 }
