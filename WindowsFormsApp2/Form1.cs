@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp2
@@ -13,6 +14,7 @@ namespace WindowsFormsApp2
         private bool isButtonMoving = false;
         private int mouseX;
         private int mouseY;
+        private bool isButtonStartClicked = false; 
 
         // Kontrolki GUI
         private ComboBox listBox = new ComboBox(); // Kontrolka ComboBox do wyświetlania zmiennych
@@ -40,6 +42,8 @@ namespace WindowsFormsApp2
 
             // Wyświetlanie informacji o utworzonej zmiennej
             MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar);
+            
+            Console.Out.WriteLine("[ID: " + newVarIterator + "] " + varName + " o wartosci: " + varVar);
 
             // Dodawanie informacji o zmiennej do tablicy
             varsTable[newVarIterator] = varName + ": " + varVar;
@@ -77,9 +81,26 @@ namespace WindowsFormsApp2
 
         private void button1_Click(object sender, EventArgs e)
         {
-            
-            
+            Button buttonStart = sender as Button;
+
+            if (!isButtonStartClicked)
+            {
+                buttonStart.BackColor = Color.Yellow;
+                isButtonStartClicked = true;
+            }
+            else
+            {
+                buttonStart.BackColor = Color.FromArgb(255, 255, 255);
+                isButtonStartClicked = false;
+            }
+
             //throw new System.NotImplementedException();
+        }
+
+        private void For_Click(object sender, EventArgs e)
+        {
+           // throw new System.NotImplementedException();
+           
         }
     }
 
