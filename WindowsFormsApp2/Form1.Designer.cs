@@ -65,7 +65,7 @@
             this.setvar.TabIndex = 1;
             this.setvar.Text = "Ustaw zmienna";
             this.setvar.UseVisualStyleBackColor = true;
-            this.setvar.Click += new System.EventHandler(this.setvar_Click);
+            this.setvar.Click += new System.EventHandler(this.setvar_Click_1);
             // 
             // delVar
             // 
@@ -118,7 +118,6 @@
             this.For.TabIndex = 12;
             this.For.Text = "Wykonaj x razy";
             this.For.UseVisualStyleBackColor = true;
-            this.For.Click += new System.EventHandler(this.For_Click);
             // 
             // maskedTextBox4
             // 
