@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Windows.Forms;
+using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp2
 {
@@ -14,10 +16,14 @@ namespace WindowsFormsApp2
         private bool isButtonMoving = false;
         private int mouseX;
         private int mouseY;
-        private bool isButtonStartClicked = false; 
+        private bool isButtonStartClicked = false;
+        
+        private List<Button> buttons = new List<Button>();
+        private List<ComboBox> comboBoxes = new List<ComboBox>();
+        
+        private int iteratorButtonY = 60;
 
         // Kontrolki GUI
-        private ComboBox listBox = new ComboBox(); // Kontrolka ComboBox do wyświetlania zmiennych
         private Button buttonToMove = new Button();
 
         // Konstruktor z argumentami name i vart (nie wydaje się być używany)
@@ -51,28 +57,14 @@ namespace WindowsFormsApp2
         }
 
         // Obsługa kliknięcia przycisku "setvar"
-        void setvar_Click(object sender, EventArgs e)
-        {
-            // Konfiguracja i rozmieszczenie kontrolki "buttonToMove" oraz "listBox"
-            buttonToMove.Width = 500;
-            buttonToMove.Location = new System.Drawing.Point(400, 20);
-
-            listBox.Width = 200;
-            panel1.Controls.Add(buttonToMove);
-            buttonToMove.Controls.Add(listBox);
-            buttonToMove.SendToBack();
-            listBox.BringToFront();
-
-            // Ustawienie źródła danych dla "listBox"
-            listBox.DataSource = varsTable;
-
-            // Obsługa kliknięcia na "listBox"
-            listBox.Click += new System.EventHandler(listBox_Click);
-        }
+        
 
         // Obsługa kliknięcia na "listBox"
         private void listBox_Click(object sender, EventArgs e)
         {
+            ComboBox listBox = sender as ComboBox;
+            Console.Out.WriteLine("TEST 1");
+            Console.Out.WriteLine(varsTable[0]);
             // Wymuszenie rozwinięcia "listBox" i aktualizacja źródła danych
             listBox.DroppedDown = true;
             listBox.DataSource = null;
@@ -85,37 +77,60 @@ namespace WindowsFormsApp2
 
             if (!isButtonStartClicked)
             {
+                
                 buttonStart.BackColor = Color.Yellow;
                 isButtonStartClicked = true;
+                
             }
             else
             {
+                
                 buttonStart.BackColor = Color.FromArgb(255, 255, 255);
                 isButtonStartClicked = false;
+                
             }
 
             //throw new System.NotImplementedException();
         }
 
-        private void For_Click(object sender, EventArgs e)
+        private void setvar_Click_1(object sender, EventArgs e)
         {
-           // throw new System.NotImplementedException();
-           
+            // Tworzenie nowego przycisku
+            Button newButton = new Button();
+            ComboBox listBox = new ComboBox();
+
+            newButton.Text = "Nowy Przycisk";
+            newButton.Width = 221;
+            newButton.Height = 30;
+            newButton.BackColor = Color.FromArgb(255, 255, 255);
+            newButton.Location = new Point(488, iteratorButtonY);
+
+            // Obsługa kliknięcia na nowym przycisku
+            newButton.Click += new EventHandler(NewButtonClick);
+            listBox.Click += new EventHandler(listBox_Click);
+
+            // Dodanie przycisku do listy przycisków
+            buttons.Add(newButton);
+            comboBoxes.Add(listBox);
+
+            // Dodanie przycisku do formularza
+            listBox.Width = 200;
+            panel1.Controls.Add(newButton);
+            
+            newButton.Controls.Add(listBox);
+            newButton.SendToBack();
+            listBox.BringToFront();
+            listBox.DataSource = null;
+            listBox.DataSource = varsTable;
+
+            iteratorButtonY += 60;
         }
-    }
 
-    
-    
-    // Klasa Variable (wydaje się być nieużywana)
-    public class Variable
-    {
-        public string Name { get; set; }
-        public int Value { get; set; }
-
-        public Variable(string name, int value)
+// Obsługa kliknięcia na nowym przycisku
+        private void NewButtonClick(object sender, EventArgs e)
         {
-            Name = name;
-            Value = value;
+            Button clickedButton = sender as Button;
+            MessageBox.Show("Kliknięto przycisk: " + clickedButton.Text);
         }
     }
 }
