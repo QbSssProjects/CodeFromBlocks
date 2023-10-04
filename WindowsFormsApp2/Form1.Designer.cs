@@ -31,7 +31,6 @@
         {
             this.newVar = new System.Windows.Forms.Button();
             this.setvar = new System.Windows.Forms.Button();
-            this.delVar = new System.Windows.Forms.Button();
             this.maskedTextBox1 = new System.Windows.Forms.MaskedTextBox();
             this.maskedTextBox3 = new System.Windows.Forms.MaskedTextBox();
             this.If = new System.Windows.Forms.Button();
@@ -44,12 +43,13 @@
             this.button1 = new System.Windows.Forms.Button();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.Start = new System.Windows.Forms.Button();
+            this.contextMenu1 = new System.Windows.Forms.ContextMenu();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // newVar
             // 
-            this.newVar.Location = new System.Drawing.Point(12, 162);
+            this.newVar.Location = new System.Drawing.Point(12, 197);
             this.newVar.Name = "newVar";
             this.newVar.Size = new System.Drawing.Size(161, 25);
             this.newVar.TabIndex = 0;
@@ -59,7 +59,7 @@
             // 
             // setvar
             // 
-            this.setvar.Location = new System.Drawing.Point(12, 191);
+            this.setvar.Location = new System.Drawing.Point(12, 226);
             this.setvar.Name = "setvar";
             this.setvar.Size = new System.Drawing.Size(161, 25);
             this.setvar.TabIndex = 1;
@@ -67,20 +67,11 @@
             this.setvar.UseVisualStyleBackColor = true;
             this.setvar.Click += new System.EventHandler(this.setvar_Click_1);
             // 
-            // delVar
-            // 
-            this.delVar.Location = new System.Drawing.Point(12, 220);
-            this.delVar.Name = "delVar";
-            this.delVar.Size = new System.Drawing.Size(161, 25);
-            this.delVar.TabIndex = 2;
-            this.delVar.Text = "Usun zmienna";
-            this.delVar.UseVisualStyleBackColor = true;
-            // 
             // maskedTextBox1
             // 
             this.maskedTextBox1.AllowPromptAsInput = false;
             this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox1.Location = new System.Drawing.Point(12, 145);
+            this.maskedTextBox1.Location = new System.Drawing.Point(12, 180);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.ReadOnly = true;
             this.maskedTextBox1.Size = new System.Drawing.Size(161, 13);
@@ -93,7 +84,7 @@
             this.maskedTextBox3.AllowPromptAsInput = false;
             this.maskedTextBox3.BackColor = System.Drawing.SystemColors.Control;
             this.maskedTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox3.Location = new System.Drawing.Point(12, 248);
+            this.maskedTextBox3.Location = new System.Drawing.Point(12, 254);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.ReadOnly = true;
             this.maskedTextBox3.Size = new System.Drawing.Size(161, 13);
@@ -103,7 +94,7 @@
             // 
             // If
             // 
-            this.If.Location = new System.Drawing.Point(12, 265);
+            this.If.Location = new System.Drawing.Point(12, 273);
             this.If.Name = "If";
             this.If.Size = new System.Drawing.Size(161, 25);
             this.If.TabIndex = 11;
@@ -112,7 +103,7 @@
             // 
             // For
             // 
-            this.For.Location = new System.Drawing.Point(12, 344);
+            this.For.Location = new System.Drawing.Point(12, 352);
             this.For.Name = "For";
             this.For.Size = new System.Drawing.Size(161, 25);
             this.For.TabIndex = 12;
@@ -123,7 +114,7 @@
             // 
             this.maskedTextBox4.AllowPromptAsInput = false;
             this.maskedTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox4.Location = new System.Drawing.Point(12, 406);
+            this.maskedTextBox4.Location = new System.Drawing.Point(12, 414);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.ReadOnly = true;
             this.maskedTextBox4.Size = new System.Drawing.Size(161, 13);
@@ -133,7 +124,7 @@
             // 
             // print
             // 
-            this.print.Location = new System.Drawing.Point(12, 425);
+            this.print.Location = new System.Drawing.Point(12, 433);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(161, 25);
             this.print.TabIndex = 17;
@@ -142,7 +133,7 @@
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(12, 456);
+            this.input.Location = new System.Drawing.Point(12, 464);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(161, 25);
             this.input.TabIndex = 18;
@@ -152,7 +143,7 @@
             // ifElse
             // 
             this.ifElse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ifElse.Location = new System.Drawing.Point(12, 294);
+            this.ifElse.Location = new System.Drawing.Point(12, 302);
             this.ifElse.Name = "ifElse";
             this.ifElse.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ifElse.Size = new System.Drawing.Size(161, 25);
@@ -174,17 +165,16 @@
             this.panel1.Controls.Add(this.If);
             this.panel1.Controls.Add(this.maskedTextBox3);
             this.panel1.Controls.Add(this.maskedTextBox1);
-            this.panel1.Controls.Add(this.delVar);
             this.panel1.Controls.Add(this.setvar);
             this.panel1.Controls.Add(this.newVar);
             this.panel1.Location = new System.Drawing.Point(0, 36);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1060, 632);
+            this.panel1.Size = new System.Drawing.Size(1060, 734);
             this.panel1.TabIndex = 24;
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 375);
+            this.button1.Location = new System.Drawing.Point(12, 383);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 25);
             this.button1.TabIndex = 25;
@@ -195,7 +185,7 @@
             // 
             this.maskedTextBox2.AllowPromptAsInput = false;
             this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox2.Location = new System.Drawing.Point(12, 325);
+            this.maskedTextBox2.Location = new System.Drawing.Point(12, 333);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.ReadOnly = true;
             this.maskedTextBox2.Size = new System.Drawing.Size(161, 13);
@@ -208,7 +198,7 @@
             this.Start.BackColor = System.Drawing.SystemColors.ButtonHighlight;
             this.Start.Location = new System.Drawing.Point(488, 30);
             this.Start.Name = "Start";
-            this.Start.Size = new System.Drawing.Size(221, 30);
+            this.Start.Size = new System.Drawing.Size(283, 30);
             this.Start.TabIndex = 23;
             this.Start.Text = "POCZATEK ";
             this.Start.UseVisualStyleBackColor = false;
@@ -219,19 +209,21 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Control;
-            this.ClientSize = new System.Drawing.Size(1064, 671);
+            this.ClientSize = new System.Drawing.Size(1064, 761);
             this.Controls.Add(this.panel1);
             this.ImeMode = System.Windows.Forms.ImeMode.Disable;
             this.Location = new System.Drawing.Point(15, 15);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(1080, 710);
-            this.MinimumSize = new System.Drawing.Size(1080, 710);
+            this.MaximumSize = new System.Drawing.Size(1080, 800);
+            this.MinimumSize = new System.Drawing.Size(1080, 800);
             this.Name = "Form1";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.ContextMenu contextMenu1;
 
         private System.Windows.Forms.Button button1;
 
@@ -256,7 +248,6 @@
 
         private System.Windows.Forms.Button newVar;
         private System.Windows.Forms.Button setvar;
-        private System.Windows.Forms.Button delVar;
 
         #endregion
     }
