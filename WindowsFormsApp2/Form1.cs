@@ -1,11 +1,24 @@
-﻿using System;
+﻿//IGNACY:
+// * zrób listę Stringów wyjściowych 
+// * kazda delkarke wartosci dodawaj na sam przód listy
+// * ogarnij forma do wybierania wartosci na przypiasnie 2 ChoosevarOn
+// * zaimplementuj reszte przyciskow 
+// * dodaj generacje kodu
+// * jesli starczy czasu dodaj scrolla zeby przesowac gora / dol panel z kodem 
+//jakby cos to dzwon UwU
+
+
+using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Drawing;
+using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp2
 {
+    
     public partial class Form1 : Form
     {
         // Pola klasy Form1
@@ -20,7 +33,7 @@ namespace WindowsFormsApp2
         private int vart;
         
         // Tablica do przechowywania informacji o zmiennych jako ciągów znaków
-        private string[] varsTable = new string[500];
+        public static string[] varsTable = new string[500];
         
         // Flaga wskazująca, czy przycisk jest przesuwany
         private bool isButtonMoving = false;
@@ -37,13 +50,20 @@ namespace WindowsFormsApp2
         private List<ComboBox> comboBoxes = new List<ComboBox>();
         private List<TextBox> textBoxesSet = new List<TextBox>();
         private List<TextBox> textBoxesOn = new List<TextBox>();
-        private List<Button> buttonSeton = new List<Button>();
+        private List<Button> varSettedButtons = new List<Button>();
+        internal static  List<Button> buttonsSetOn = new List<Button>();
         
         // Pozycja dla kolejnego przycisku
         private int iteratorButtonY = 60;
 
         // Kontrolki GUI
-        private Button buttonToMove = new Button();
+
+        public static int index;
+
+        private bool flagVarAccepted = true;
+        
+        
+        
 
         // Konstruktor z argumentami name i vart (nie wydaje się być używany)
         public Form1(string name, int vart)
@@ -52,6 +72,7 @@ namespace WindowsFormsApp2
             this.vart = vart;
         }
 
+        
         // Konstruktor domyślny
         public Form1()
         {
@@ -63,27 +84,59 @@ namespace WindowsFormsApp2
         {
             // Wyświetlanie okna dialogowego do wprowadzenia nazwy i wartości zmiennej
             string varName = Microsoft.VisualBasic.Interaction.InputBox("Podaj nazwę zmiennej ", "Tworzenie zmiennej");
-            long varVar = int.Parse(Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość zmiennej", "Tworzenie zmiennej"));
+            var varVarStr = Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość zmiennej", "Tworzenie zmiennej", "0");
 
-            // Wyświetlanie informacji o utworzonej zmiennej
-            MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar);
+
+            int varVar;
+            if (int.TryParse(varVarStr, out varVar))
+             {
+                 flagVarAccepted = true;
+                Console.Out.WriteLine(varVar);
+             }
+             else
+            {
+                flagVarAccepted = false;
+                MessageBox.Show("BŁĄD! PODAJ WARTOŚĆ LICZBOWĄ");
+            }
+
+            if (flagVarAccepted)
+            {
+                MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar);
             
-            Console.Out.WriteLine("[ID: " + newVarIterator + "] " + varName + " o wartosci: " + varVar);
+                Console.Out.WriteLine("[ID: " + newVarIterator + "] " + varName + " o wartosci: " + varVar);
 
-            // Dodawanie informacji o zmiennej do tablicy
-            varsTable[newVarIterator] = varName + ": " + varVar;
-            newVarIterator++;
+                // Dodawanie informacji o zmiennej do tablicy
+                varsTable[newVarIterator] = varName + ": " + varVar;
+                newVarIterator++;
+
+
+                /*Button varSetted = new Button();
+                varSetted.Text = "Ustawiono wartość " + varName + " na: " + varVar;
+                varSetted.Width = 283;
+                varSetted.Height = 30;
+                varSetted.BackColor = Color.FromArgb(255, 255, 255);
+                varSetted.Location = new Point(488, iteratorButtonY);
+
+                iteratorButtonY += 30;
+                varSettedButtons.Add(varSetted);
+                
+                panel1.Controls.Add(varSetted);*/
+            }
+            
         }
 
         // Obsługa kliknięcia przycisku "setvar"
         private void setvar_Click_1(object sender, EventArgs e)
         {
+            
+            
             // Tworzenie nowego przycisku
             Button newButton = new Button();
             ComboBox listBox = new ComboBox();
             TextBox textBoxSet = new TextBox();
             TextBox textBoxOn = new TextBox();
             Button buttonSetOn = new Button();
+            
             
             newButton.Text = "";
             newButton.Width = 283;
@@ -111,8 +164,9 @@ namespace WindowsFormsApp2
             buttonSetOn.Location = new Point(167, 5);
             
             // Obsługa kliknięcia na nowym przycisku
-            newButton.Click += new EventHandler(NewButtonClick);
             listBox.Click += new EventHandler(listBox_Click);
+            buttonSetOn.Click += new EventHandler(buttonSetOn_Click);
+            buttonsSetOn.Add(buttonSetOn);
 
             // Dodanie przycisku do listy przycisków
             buttons.Add(newButton);
@@ -140,6 +194,8 @@ namespace WindowsFormsApp2
             listBox.DataSource = varsTable;
 
             iteratorButtonY += 30;
+
+            //buttonSetOn.Tag = buttonsSetOn.IndexOf(buttonSetOn);
         }
 
         // Obsługa kliknięcia przycisku "button1"
@@ -171,10 +227,15 @@ namespace WindowsFormsApp2
         }
 
         // Obsługa kliknięcia na nowym przycisku
-        private void NewButtonClick(object sender, EventArgs e)
+        private void buttonSetOn_Click(object sender, EventArgs e)
         {
-            Button clickedButton = sender as Button;
-            MessageBox.Show("Kliknięto przycisk: " + clickedButton.Text);
+            Button clicked = sender as Button;
+            index = buttonsSetOn.IndexOf(clicked);
+            //Console.Out.WriteLine(index + "|||");
+            
+            var ChooseForm = new ChoosseVarOn();
+            ChooseForm.Show();
         }
+        
     }
 }
