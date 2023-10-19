@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Drawing;
 using static WindowsFormsApp2.Form1;
 
 namespace WindowsFormsApp2
@@ -263,11 +264,8 @@ namespace WindowsFormsApp2
             //throw new System.NotImplementedException();
         }
         
-
         /*private void Ok_Click(object sender, EventArgs e)
         {
-            
-            
             //throw new System.NotImplementedException();
         }*/
 
@@ -275,19 +273,28 @@ namespace WindowsFormsApp2
         {
             //throw new System.NotImplementedException();
         }
-
+        
+        
         private void Add1_Click(object sender, EventArgs e)
         {
-            buttonsChooseVar.Click += new EventHandler(buttonChooseVar_Click);
-            buttonsChooseVar.Add(buttonsChooseVar);
+            Button buttonChooseVar = new Button();
+            
+            buttonChooseVar.Click += new EventHandler(buttonChooseVar_Click);
+            buttonsChooseVar.Add(buttonChooseVar);
+            
+            //throw new System.NotImplementedException();
         }
+
         private void buttonChooseVar_Click(object sender, EventArgs e)
         {
+            
             index = buttonsSetOn.IndexOf(sender as Button);
             //Console.Out.WriteLine(index + "|||");
-            
+
             var ChooseForm = new ChoosseVarOn();
             ChooseForm.Show();
+            
+            //throw new System.NotImplementedException();
         }
     }
 }
