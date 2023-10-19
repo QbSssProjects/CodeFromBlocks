@@ -1,31 +1,33 @@
 ﻿using System;
 using System.Windows.Forms;
+using System.Collections.Generic;
 using static WindowsFormsApp2.Form1;
 
 namespace WindowsFormsApp2
 {
     public partial class ChoosseVarOn : Form
     {
-        public static int varSeted; 
+        public static int varSeted;
+
+        public static int indexClickedButton;
+        
+        internal static List<Button> buttonsChooseVar = new List<Button>();
         
         public ChoosseVarOn()
         {
             var classForm = new Form1();
-            
+
             InitializeComponent();
         }
 
-
-        private void radioButton1_Checked(object sender, EventArgs e)
-        {
-            Console.Out.WriteLine("AAAA");
-            //throw new System.NotImplementedException();
-        }
-
+        //dodawanie
         private void AddRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (Add1.Enabled == false && Add2.Enabled == false)
             {
+                Add1.Enabled = true;
+                Add2.Enabled = true;
+                
                 Sub1.Enabled = false;
                 Sub2.Enabled = false;
 
@@ -40,9 +42,7 @@ namespace WindowsFormsApp2
 
                 OnVar.Enabled = false;
                 OnNumer.Enabled = false;
-
-                Add1.Enabled = true;
-                Add2.Enabled = true;
+                
             }
             else
             {
@@ -60,6 +60,9 @@ namespace WindowsFormsApp2
                 Add1.Enabled = false;
                 Add2.Enabled = false;
 
+                Sub1.Enabled = true;
+                Sub2.Enabled = true;
+                
                 Multipy1.Enabled = false;
                 Multipy2.Enabled = false;
 
@@ -71,9 +74,6 @@ namespace WindowsFormsApp2
 
                 OnVar.Enabled = false;
                 OnNumer.Enabled = false;
-  
-                Sub1.Enabled = true;
-                Sub2.Enabled = true;
             }
             else
             {
@@ -94,6 +94,9 @@ namespace WindowsFormsApp2
 
                 Sub1.Enabled = false;
                 Sub2.Enabled = false;
+                
+                Multipy1.Enabled = true;
+                Multipy2.Enabled = true;
 
                 Div1.Enabled = false;
                 Div2.Enabled = false;
@@ -129,15 +132,15 @@ namespace WindowsFormsApp2
 
                 Multipy1.Enabled = false;
                 Multipy2.Enabled = false;
+                
+                Div1.Enabled = true;
+                Div2.Enabled = true;
 
                 Mod1.Enabled = false;
                 Mod2.Enabled = false;
 
                 OnVar.Enabled = false;
                 OnNumer.Enabled = false;
-
-                Div1.Enabled = true;
-                Div2.Enabled = true;
             }
             else
             {
@@ -164,11 +167,11 @@ namespace WindowsFormsApp2
                 Div1.Enabled = false;
                 Div2.Enabled = false;
 
-                OnVar.Enabled = false;
-                OnNumer.Enabled = false;
-
                 Mod1.Enabled = true;
                 Mod2.Enabled = true;
+                
+                OnVar.Enabled = false;
+                OnNumer.Enabled = false;
             }
             else
             {
@@ -199,9 +202,8 @@ namespace WindowsFormsApp2
                 Mod1.Enabled = false;
                 Mod1.Enabled = false; 
                 
-                OnNumer.Enabled = false;
-
                 OnVar.Enabled = true;
+                OnNumer.Enabled = false;
             }
             else
             {
@@ -232,7 +234,6 @@ namespace WindowsFormsApp2
                 Mod1.Enabled = false; 
                 
                 OnVar.Enabled = false;
-
                 OnNumer.Enabled = true;
             }
             else
@@ -273,6 +274,20 @@ namespace WindowsFormsApp2
         private void Ok_Click(object sender, EventArgs e)
         {
             //throw new System.NotImplementedException();
+        }
+
+        private void Add1_Click(object sender, EventArgs e)
+        {
+            buttonsChooseVar.Click += new EventHandler(buttonChooseVar_Click);
+            buttonsChooseVar.Add(buttonsChooseVar);
+        }
+        private void buttonChooseVar_Click(object sender, EventArgs e)
+        {
+            index = buttonsSetOn.IndexOf(sender as Button);
+            //Console.Out.WriteLine(index + "|||");
+            
+            var ChooseForm = new ChoosseVarOn();
+            ChooseForm.Show();
         }
     }
 }

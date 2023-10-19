@@ -304,6 +304,7 @@ namespace WindowsFormsApp2
             this.Add1.TabIndex = 25;
             this.Add1.Text = "Wybierz";
             this.Add1.UseVisualStyleBackColor = true;
+            this.Add1.Click += new System.EventHandler(this.Add1_Click);
             // 
             // Add2
             // 

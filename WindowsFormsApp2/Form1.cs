@@ -62,17 +62,6 @@ namespace WindowsFormsApp2
 
         private bool flagVarAccepted = true;
         
-        
-        
-
-        // Konstruktor z argumentami name i vart (nie wydaje się być używany)
-        public Form1(string name, int vart)
-        {
-            this.name = name;
-            this.vart = vart;
-        }
-
-        
         // Konstruktor domyślny
         public Form1()
         {
@@ -128,8 +117,6 @@ namespace WindowsFormsApp2
         // Obsługa kliknięcia przycisku "setvar"
         private void setvar_Click_1(object sender, EventArgs e)
         {
-            
-            
             // Tworzenie nowego przycisku
             Button newButton = new Button();
             ComboBox listBox = new ComboBox();
@@ -229,13 +216,11 @@ namespace WindowsFormsApp2
         // Obsługa kliknięcia na nowym przycisku
         private void buttonSetOn_Click(object sender, EventArgs e)
         {
-            Button clicked = sender as Button;
-            index = buttonsSetOn.IndexOf(clicked);
+            index = buttonsSetOn.IndexOf(sender as Button);
             //Console.Out.WriteLine(index + "|||");
             
             var ChooseForm = new ChoosseVarOn();
             ChooseForm.Show();
         }
-        
     }
 }

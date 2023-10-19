@@ -49,6 +49,12 @@
         <Reference Include="System.Xml"/>
     </ItemGroup>
     <ItemGroup>
+        <Compile Include="ChooseVar.cs">
+          <SubType>Form</SubType>
+        </Compile>
+        <Compile Include="ChooseVar.Designer.cs">
+          <DependentUpon>ChooseVar.cs</DependentUpon>
+        </Compile>
         <Compile Include="ChoosseVarOn.cs">
           <SubType>Form</SubType>
         </Compile>
@@ -63,6 +69,9 @@
         </Compile>
         <Compile Include="Program.cs"/>
         <Compile Include="Properties\AssemblyInfo.cs"/>
+        <EmbeddedResource Include="ChooseVar.resx">
+          <DependentUpon>ChooseVar.cs</DependentUpon>
+        </EmbeddedResource>
         <EmbeddedResource Include="ChoosseVarOn.resx">
           <DependentUpon>ChoosseVarOn.cs</DependentUpon>
         </EmbeddedResource>
