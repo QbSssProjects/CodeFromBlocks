@@ -217,7 +217,7 @@ namespace WindowsFormsApp2
         private void buttonSetOn_Click(object sender, EventArgs e)
         {
             index = buttonsSetOn.IndexOf(sender as Button);
-            //Console.Out.WriteLine(index + "|||");
+            Console.Out.WriteLine(index);
             
             var ChooseForm = new ChoosseVarOn();
             ChooseForm.Show();

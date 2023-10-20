@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
-using System.Drawing;
 using static WindowsFormsApp2.Form1;
 
 namespace WindowsFormsApp2
@@ -10,9 +9,7 @@ namespace WindowsFormsApp2
     {
         public static int varSeted;
 
-        public static int indexClickedButton;
-        
-        internal static List<Button> buttonsChooseVar = new List<Button>();
+        public static int indexButtonSetVar;
         
         public ChoosseVarOn()
         {
@@ -277,23 +274,10 @@ namespace WindowsFormsApp2
         
         private void Add1_Click(object sender, EventArgs e)
         {
-            Button buttonChooseVar = new Button();
+            indexButtonSetVar = buttonsSetOn.IndexOf(sender as Button);
             
-            buttonChooseVar.Click += new EventHandler(buttonChooseVar_Click);
-            buttonsChooseVar.Add(buttonChooseVar);
-            
-            //throw new System.NotImplementedException();
-        }
-
-        private void buttonChooseVar_Click(object sender, EventArgs e)
-        {
-            
-            index = buttonsSetOn.IndexOf(sender as Button);
-            //Console.Out.WriteLine(index + "|||");
-
-            var ChooseForm = new ChoosseVarOn();
+            var ChooseForm = new ChooseVar();
             ChooseForm.Show();
-            
             //throw new System.NotImplementedException();
         }
     }
