@@ -11,6 +11,8 @@ namespace WindowsFormsApp2
 
         public static int indexButtonSetVar;
         
+        public static Button clickedButton;
+        
         public ChoosseVarOn()
         {
             var classForm = new Form1();
@@ -274,7 +276,8 @@ namespace WindowsFormsApp2
         
         private void Add1_Click(object sender, EventArgs e)
         {
-            indexButtonSetVar = buttonsSetOn.IndexOf(sender as Button);
+            clickedButton = sender as Button;
+            
             
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();

@@ -40,10 +40,17 @@ namespace WindowsFormsApp2
             }
         }
         
+        
+
+
         private void ChooseNumber_ValueChanged(object sender, EventArgs e)
         {
-            numberSeted = (int)ChooseNumber.Value;
-            buttonsSetOn[index].Text = varSeted.ToString();
+            
+            int numberSetedValue1 = (int)ChooseNumber.Value;
+            
+            ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
+            
+            //throw new System.NotImplementedException();
         }
     }
 }

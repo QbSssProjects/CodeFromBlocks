@@ -79,6 +79,7 @@ namespace WindowsFormsApp2
             this.ChooseNumber.Name = "ChooseNumber";
             this.ChooseNumber.Size = new System.Drawing.Size(121, 20);
             this.ChooseNumber.TabIndex = 25;
+            this.ChooseNumber.ValueChanged += new System.EventHandler(this.ChooseNumber_ValueChanged);
             // 
             // OkChooseVar
             // 

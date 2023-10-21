@@ -1,4 +1,4 @@
-﻿//IGNACY:
+﻿﻿//IGNACY:
 // * zrób listę Stringów wyjściowych 
 // * kazda delkarke wartosci dodawaj na sam przód listy
 // * ogarnij forma do wybierania wartosci na przypiasnie 2 ChoosevarOn
