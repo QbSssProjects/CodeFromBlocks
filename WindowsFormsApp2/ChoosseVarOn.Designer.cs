@@ -179,6 +179,7 @@ namespace WindowsFormsApp2
             this.Sub2.TabIndex = 12;
             this.Sub2.Text = "Wybierz";
             this.Sub2.UseVisualStyleBackColor = true;
+            this.Sub2.Click += new System.EventHandler(this.Sub2_Click);
             // 
             // Sub1
             // 
@@ -189,6 +190,7 @@ namespace WindowsFormsApp2
             this.Sub1.TabIndex = 11;
             this.Sub1.Text = "Wybierz";
             this.Sub1.UseVisualStyleBackColor = true;
+            this.Sub1.Click += new System.EventHandler(this.Sub1_Click);
             // 
             // textBox4
             // 
@@ -210,6 +212,7 @@ namespace WindowsFormsApp2
             this.Multipy2.TabIndex = 15;
             this.Multipy2.Text = "Wybierz";
             this.Multipy2.UseVisualStyleBackColor = true;
+            this.Multipy2.Click += new System.EventHandler(this.Multipy2_Click);
             // 
             // Multipy1
             // 
@@ -220,6 +223,7 @@ namespace WindowsFormsApp2
             this.Multipy1.TabIndex = 14;
             this.Multipy1.Text = "Wybierz";
             this.Multipy1.UseVisualStyleBackColor = true;
+            this.Multipy1.Click += new System.EventHandler(this.Multipy1_Click);
             // 
             // textBox5
             // 
@@ -241,6 +245,7 @@ namespace WindowsFormsApp2
             this.Div2.TabIndex = 18;
             this.Div2.Text = "Wybierz";
             this.Div2.UseVisualStyleBackColor = true;
+            this.Div2.Click += new System.EventHandler(this.Div2_Click);
             // 
             // Div1
             // 
@@ -251,6 +256,7 @@ namespace WindowsFormsApp2
             this.Div1.TabIndex = 17;
             this.Div1.Text = "Wybierz";
             this.Div1.UseVisualStyleBackColor = true;
+            this.Div1.Click += new System.EventHandler(this.Div1_Click);
             // 
             // textBox6
             // 
@@ -272,6 +278,7 @@ namespace WindowsFormsApp2
             this.Mod2.TabIndex = 21;
             this.Mod2.Text = "Wybierz";
             this.Mod2.UseVisualStyleBackColor = true;
+            this.Mod2.Click += new System.EventHandler(this.Mod2_Click);
             // 
             // Mod1
             // 
@@ -282,6 +289,7 @@ namespace WindowsFormsApp2
             this.Mod1.TabIndex = 20;
             this.Mod1.Text = "Wybierz";
             this.Mod1.UseVisualStyleBackColor = true;
+            this.Mod1.Click += new System.EventHandler(this.Mod1_Click);
             // 
             // OnNumer
             // 
@@ -314,6 +322,7 @@ namespace WindowsFormsApp2
             this.Add2.TabIndex = 26;
             this.Add2.Text = "Wybierz";
             this.Add2.UseVisualStyleBackColor = true;
+            this.Add2.Click += new System.EventHandler(this.Add2_Click);
             // 
             // OnVar
             // 

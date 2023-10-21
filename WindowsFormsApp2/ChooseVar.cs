@@ -5,7 +5,6 @@ namespace WindowsFormsApp2
 {
     public partial class ChooseVar : Form
     {
-        public static int numberSeted;
         public ChooseVar()
         {
             InitializeComponent();
@@ -40,14 +39,28 @@ namespace WindowsFormsApp2
             }
         }
         
-        
-
-
         private void ChooseNumber_ValueChanged(object sender, EventArgs e)
         {
+            int numberSetedValue1 = (int)ChooseNumber.Value; 
+            ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
             
-            int numberSetedValue1 = (int)ChooseNumber.Value;
-            
+            //throw new System.NotImplementedException();
+        }
+
+        private void comboBoxChooseVar_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int selectedIndex = comboBoxChooseVar.SelectedIndex;
+            var selectedVar = comboBoxChooseVar.SelectedItem as string; // Rzutujemy na string
+            var splitItems = selectedVar.Split(new string[] { ": " }, StringSplitOptions.None);
+            if (int.TryParse(splitItems[1], out int result))
+            {
+                Console.Out.WriteLine(result);
+            }
+            else
+            {
+                Console.Out.WriteLine("Error! Cannot Convert splitItem to int");
+            }
+            int numberSetedValue1 = result;
             ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
             
             //throw new System.NotImplementedException();

@@ -47,6 +47,7 @@ namespace WindowsFormsApp2
             this.comboBoxChooseVar.Name = "comboBoxChooseVar";
             this.comboBoxChooseVar.Size = new System.Drawing.Size(121, 21);
             this.comboBoxChooseVar.TabIndex = 1;
+            this.comboBoxChooseVar.SelectedIndexChanged += new System.EventHandler(this.comboBoxChooseVar_SelectedIndexChanged);
             // 
             // ZmiennaRadioBox
             // 

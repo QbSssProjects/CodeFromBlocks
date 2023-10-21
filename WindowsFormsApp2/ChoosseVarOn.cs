@@ -8,8 +8,6 @@ namespace WindowsFormsApp2
     public partial class ChoosseVarOn : Form
     {
         public static int varSeted;
-
-        public static int indexButtonSetVar;
         
         public static Button clickedButton;
         
@@ -219,8 +217,6 @@ namespace WindowsFormsApp2
             OnVar.DataSource = varsTable;
 
             OnVar.DroppedDown = true;
-
-            //throw new System.NotImplementedException();
         }
         
         private void OnNumberRadio_CheckedChanged(object sender, EventArgs e)
@@ -262,26 +258,81 @@ namespace WindowsFormsApp2
 
             //throw new System.NotImplementedException();
         }
-        
-        /*private void Ok_Click(object sender, EventArgs e)
-        {
-            //throw new System.NotImplementedException();
-        }*/
 
         private void Ok_Click(object sender, EventArgs e)
         {
             //throw new System.NotImplementedException();
         }
         
-        
+        //Wywoływanie okna ChooseVar
         private void Add1_Click(object sender, EventArgs e)
         {
             clickedButton = sender as Button;
-            
-            
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
-            //throw new System.NotImplementedException();
+        }
+
+        private void Add2_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Sub1_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Sub2_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Multipy1_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Multipy2_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Div1_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Div2_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Mod1_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void Mod2_Click(object sender, EventArgs e)
+        {
+            clickedButton = sender as Button;
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
         }
     }
 }
