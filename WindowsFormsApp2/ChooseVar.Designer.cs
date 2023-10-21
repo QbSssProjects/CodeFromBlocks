@@ -39,7 +39,7 @@ namespace WindowsFormsApp2
             this.listBoxChooseVar.FormattingEnabled = true;
             this.listBoxChooseVar.Location = new System.Drawing.Point(67, 30);
             this.listBoxChooseVar.Name = "listBoxChooseVar";
-            this.listBoxChooseVar.Size = new System.Drawing.Size(100, 17);
+            this.listBoxChooseVar.Size = new System.Drawing.Size(100, 30);
             this.listBoxChooseVar.TabIndex = 0;
             // 
             // ChooseVar

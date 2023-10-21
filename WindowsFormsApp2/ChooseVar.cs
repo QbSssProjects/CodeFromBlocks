@@ -10,7 +10,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
             
             listBoxChooseVar.DataSource = null;
-            listBoxChooseVar.DataSource = varsTable;
+            listBoxChooseVar.DataSource = Form1.varsTable;
         }
         private void listBoxChooseVar_Click(object sender, EventArgs e)
         {
@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
             // Wymuszenie rozwinięcia "listBox" i aktualizacja źródła danych
             listBoxChooseVar.DroppedDown = true;
             listBoxChooseVar.DataSource = null;
-            listBoxChooseVar.DataSource = varsTable;
+            listBoxChooseVar.DataSource = Form1.varsTable;
         }
         private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
         {
