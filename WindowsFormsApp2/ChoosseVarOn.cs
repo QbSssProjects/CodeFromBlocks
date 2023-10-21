@@ -47,8 +47,6 @@ namespace WindowsFormsApp2
                 Add1.Enabled = false;
                 Add2.Enabled = false;
             }
-
-            //throw new System.NotImplementedException();
         }
 
         private void SubRadio_CheckedChanged(object sender, EventArgs e)
@@ -78,9 +76,6 @@ namespace WindowsFormsApp2
                 Sub1.Enabled = false;
                 Sub2.Enabled = false;
             }
-            
-            
-            //throw new System.NotImplementedException();
         }
 
         private void MultipyRadio_CheckedChanged(object sender, EventArgs e)
@@ -113,9 +108,6 @@ namespace WindowsFormsApp2
                 Multipy1.Enabled = false;
                 Multipy2.Enabled = false;
             }
-            
-            
-            //throw new System.NotImplementedException();
         }
 
         private void DivRadio_CheckedChanged(object sender, EventArgs e)
@@ -145,8 +137,6 @@ namespace WindowsFormsApp2
                 Div1.Enabled = false;
                 Div2.Enabled = false;
             }
-            
-            //throw new System.NotImplementedException();
         }
 
         private void ModRadio_CheckedChanged(object sender, EventArgs e)
@@ -176,8 +166,6 @@ namespace WindowsFormsApp2
                 Mod1.Enabled = false;
                 Mod2.Enabled = false;
             }
-            
-            //throw new System.NotImplementedException();
         }
 
         private void OnVarRadio_CheckedChanged(object sender, EventArgs e)
@@ -207,8 +195,6 @@ namespace WindowsFormsApp2
             {
                 OnVar.Enabled = false;
             }
-            
-            //throw new System.NotImplementedException();
         }
         
         private void OnVar_Clicked(object sender, EventArgs e)
@@ -221,7 +207,6 @@ namespace WindowsFormsApp2
         
         private void OnNumberRadio_CheckedChanged(object sender, EventArgs e)
         {
-            
             if (OnNumer.Enabled == false)
             {
                 Add1.Enabled = false;
@@ -246,8 +231,6 @@ namespace WindowsFormsApp2
             {
                 OnNumer.Enabled = false;
             }
-            
-            //throw new System.NotImplementedException();
         }
         
         private void OnNumer_ValueChanged(object sender, EventArgs e)

@@ -100,7 +100,7 @@
             this.If.TabIndex = 11;
             this.If.Text = "Jeśli";
             this.If.UseVisualStyleBackColor = true;
-            //this.If.Click += new System.EventHandler(this.If_Click);
+            this.If.Click += new System.EventHandler(this.If_Click);
             // 
             // For
             // 

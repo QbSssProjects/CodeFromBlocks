@@ -1,4 +1,4 @@
-﻿﻿//IGNACY:
+﻿//IGNACY:
 // * zrób listę Stringów wyjściowych 
 // * kazda delkarke wartosci dodawaj na sam przód listy
 // * ogarnij forma do wybierania wartosci na przypiasnie 2 ChoosevarOn
@@ -119,7 +119,7 @@ namespace WindowsFormsApp2
         {
             // Tworzenie nowego przycisku
             Button newButton = new Button();
-            ComboBox listBox = new ComboBox();
+            ComboBox comboBox = new ComboBox();
             TextBox textBoxSet = new TextBox();
             TextBox textBoxOn = new TextBox();
             Button buttonSetOn = new Button();
@@ -131,7 +131,7 @@ namespace WindowsFormsApp2
             newButton.BackColor = Color.FromArgb(255, 255, 255);
             newButton.Location = new Point(488, iteratorButtonY);
             
-            listBox.Location = new Point(40, 5);
+            comboBox.Location = new Point(40, 5);
 
             textBoxSet.Text = "Ustaw";
             textBoxSet.Location = new Point(3, 8);
@@ -151,34 +151,34 @@ namespace WindowsFormsApp2
             buttonSetOn.Location = new Point(167, 5);
             
             // Obsługa kliknięcia na nowym przycisku
-            listBox.Click += new EventHandler(listBox_Click);
+            comboBox.Click += new EventHandler(comboBox_Click);
             buttonSetOn.Click += new EventHandler(buttonSetOn_Click);
             buttonsSetOn.Add(buttonSetOn);
 
             // Dodanie przycisku do listy przycisków
             buttons.Add(newButton);
-            comboBoxes.Add(listBox);
+            comboBoxes.Add(comboBox);
             textBoxesOn.Add(textBoxOn);
             textBoxesSet.Add(textBoxSet);
             
 
             // Dodanie przycisku do formularza
-            listBox.Width = 100;
+            comboBox.Width = 100;
             
             panel1.Controls.Add(newButton);
             newButton.Controls.Add(textBoxSet);
-            newButton.Controls.Add(listBox);
+            newButton.Controls.Add(comboBox);
             newButton.Controls.Add(textBoxOn);
             newButton.Controls.Add(buttonSetOn);
             
             newButton.SendToBack();
-            listBox.BringToFront();
+            comboBox.BringToFront();
             textBoxSet.BringToFront();
             textBoxOn.BringToFront();
             buttonSetOn.BringToFront();
             
-            listBox.DataSource = null;
-            listBox.DataSource = varsTable;
+            comboBox.DataSource = null;
+            comboBox.DataSource = varsTable;
 
             iteratorButtonY += 30;
 
@@ -202,15 +202,15 @@ namespace WindowsFormsApp2
             }
         }
 
-        // Obsługa kliknięcia na ComboBox "listBox"
-        private void listBox_Click(object sender, EventArgs e)
+        // Obsługa kliknięcia na ComboBox "comboBox"
+        private void comboBox_Click(object sender, EventArgs e)
         {
-            ComboBox listBox = sender as ComboBox;
+            ComboBox comboBox = sender as ComboBox;
             
-            // Wymuszenie rozwinięcia "listBox" i aktualizacja źródła danych
-            listBox.DroppedDown = true;
-            listBox.DataSource = null;
-            listBox.DataSource = varsTable;
+            // Wymuszenie rozwinięcia "comboBox" i aktualizacja źródła danych
+            comboBox.DroppedDown = true;
+            comboBox.DataSource = null;
+            comboBox.DataSource = varsTable;
         }
 
         // Obsługa kliknięcia na nowym przycisku
@@ -221,6 +221,46 @@ namespace WindowsFormsApp2
             
             var ChooseForm = new ChoosseVarOn();
             ChooseForm.Show();
+        }
+
+        private void If_Click(object sender, EventArgs e)
+        {
+            // Tworzenie nowego przycisku
+            Button IfButton = new Button();
+            ComboBox comboBox = new ComboBox();
+            TextBox textBoxIf = new TextBox();
+            
+            
+            IfButton.Text = "";
+            IfButton.Width = 283;
+            IfButton.Height = 30;
+            IfButton.BackColor = Color.FromArgb(255, 255, 255);
+            IfButton.Location = new Point(488, iteratorButtonY);
+            
+
+            textBoxIf.Text = "Jezeli";
+            textBoxIf.Location = new Point(3, 8);
+            textBoxIf.Width = 37;
+            textBoxIf.ReadOnly = true;
+            textBoxIf.BorderStyle = BorderStyle.None;
+            textBoxIf.BackColor = Color.FromArgb(255, 255, 255);
+            
+            comboBox.Location = new Point(40, 5);
+            
+            comboBox.Click += new EventHandler(comboBox_Click);
+            
+            // Dodanie przycisku do listy przycisków
+            buttons.Add(IfButton);
+            comboBoxes.Add(comboBox);
+            textBoxesOn.Add(textBoxIf);
+            
+            // Dodanie przycisku do formularza
+            comboBox.Width = 100;
+            
+            //Dodanie kontrolek do formularza
+            panel1.Controls.Add(IfButton);
+            IfButton.Controls.Add(comboBox);
+            IfButton.Controls.Add(textBoxIf);
         }
     }
 }

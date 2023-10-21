@@ -43,8 +43,6 @@ namespace WindowsFormsApp2
         {
             int numberSetedValue1 = (int)ChooseNumber.Value; 
             ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
-            
-            //throw new System.NotImplementedException();
         }
 
         private void comboBoxChooseVar_SelectedIndexChanged(object sender, EventArgs e)
@@ -60,10 +58,9 @@ namespace WindowsFormsApp2
             {
                 Console.Out.WriteLine("Error! Cannot Convert splitItem to int");
             }
+            
             int numberSetedValue1 = result;
             ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
-            
-            //throw new System.NotImplementedException();
         }
 
         private void OkChooseVar_Click(object sender, EventArgs e)
