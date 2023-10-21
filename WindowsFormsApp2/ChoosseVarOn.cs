@@ -210,7 +210,17 @@ namespace WindowsFormsApp2
             
             //throw new System.NotImplementedException();
         }
+        
+        private void OnVar_Clicked(object sender, EventArgs e)
+        {
+            OnVar.DataSource = null;
+            OnVar.DataSource = varsTable;
 
+            OnVar.DroppedDown = true;
+
+            //throw new System.NotImplementedException();
+        }
+        
         private void OnNumberRadio_CheckedChanged(object sender, EventArgs e)
         {
             
@@ -241,17 +251,7 @@ namespace WindowsFormsApp2
             
             //throw new System.NotImplementedException();
         }
-
-        private void OnVar_Clicked(object sender, EventArgs e)
-        {
-            OnVar.DataSource = null;
-            OnVar.DataSource = varsTable;
-
-            OnVar.DroppedDown = true;
-
-            //throw new System.NotImplementedException();
-        }
-
+        
         private void OnNumer_ValueChanged(object sender, EventArgs e)
         {
             varSeted = (int)OnNumer.Value;

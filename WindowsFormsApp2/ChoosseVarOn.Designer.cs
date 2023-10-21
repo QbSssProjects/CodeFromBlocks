@@ -57,7 +57,6 @@ namespace WindowsFormsApp2
             this.Add1 = new System.Windows.Forms.Button();
             this.Add2 = new System.Windows.Forms.Button();
             this.OnVar = new System.Windows.Forms.ComboBox();
-            this.Cancel = new System.Windows.Forms.Button();
             this.Ok = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.OnNumer)).BeginInit();
             this.SuspendLayout();
@@ -325,20 +324,10 @@ namespace WindowsFormsApp2
             this.OnVar.Size = new System.Drawing.Size(175, 21);
             this.OnVar.TabIndex = 27;
             // 
-            // Cancel
-            // 
-            this.Cancel.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Cancel.Location = new System.Drawing.Point(232, 320);
-            this.Cancel.Name = "Cancel";
-            this.Cancel.Size = new System.Drawing.Size(95, 27);
-            this.Cancel.TabIndex = 29;
-            this.Cancel.Text = "Anuluj";
-            this.Cancel.UseVisualStyleBackColor = true;
-            // 
             // Ok
             // 
             this.Ok.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.Ok.Location = new System.Drawing.Point(131, 320);
+            this.Ok.Location = new System.Drawing.Point(161, 320);
             this.Ok.Name = "Ok";
             this.Ok.Size = new System.Drawing.Size(95, 27);
             this.Ok.TabIndex = 30;
@@ -352,7 +341,6 @@ namespace WindowsFormsApp2
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(444, 359);
             this.Controls.Add(this.Ok);
-            this.Controls.Add(this.Cancel);
             this.Controls.Add(this.OnVar);
             this.Controls.Add(this.Add2);
             this.Controls.Add(this.Add1);
@@ -386,8 +374,6 @@ namespace WindowsFormsApp2
         }
 
         private System.Windows.Forms.Button Ok;
-
-        private System.Windows.Forms.Button Cancel;
 
         private System.Windows.Forms.ComboBox OnVar;
 

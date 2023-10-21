@@ -5,26 +5,45 @@ namespace WindowsFormsApp2
 {
     public partial class ChooseVar : Form
     {
+        public static int numberSeted;
         public ChooseVar()
         {
             InitializeComponent();
             
-            listBoxChooseVar.DataSource = null;
-            listBoxChooseVar.DataSource = Form1.varsTable;
+            comboBoxChooseVar.DataSource = null;
+            comboBoxChooseVar.DataSource = Form1.varsTable;
         }
-        private void listBoxChooseVar_Click(object sender, EventArgs e)
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
         {
-            ComboBox listBoxChooseVar = sender as ComboBox;
-            
-            // Wymuszenie rozwinięcia "listBox" i aktualizacja źródła danych
-            listBoxChooseVar.DroppedDown = true;
-            listBoxChooseVar.DataSource = null;
-            listBoxChooseVar.DataSource = Form1.varsTable;
+            if (comboBoxChooseVar.Enabled == false)
+            {
+                comboBoxChooseVar.Enabled = true;
+                ChooseNumber.Enabled = false;
+            }
+            else
+            {
+                comboBoxChooseVar.Enabled = false;
+            }
         }
-        private void listBox1_SelectedIndexChanged(object sender, EventArgs e)
+
+        private void NumberRadio_CheckedChanged(object sender, EventArgs e)
         {
-            //buttonsSetOn[indexClickedButton].Text = varSeted.ToString();
-            //throw new System.NotImplementedException();
+            if (comboBoxChooseVar.Enabled == false)
+            {
+                comboBoxChooseVar.Enabled = false;
+                ChooseNumber.Enabled = true;
+            }
+            else
+            {
+                ChooseNumber.Enabled = false;
+            }
+        }
+        
+        private void ChooseNumber_ValueChanged(object sender, EventArgs e)
+        {
+            numberSeted = (int)ChooseNumber.Value;
+            buttonsSetOn[index].Text = varSeted.ToString();
         }
     }
 }
