@@ -90,6 +90,7 @@ namespace WindowsFormsApp2
             this.OkChooseVar.TabIndex = 26;
             this.OkChooseVar.Text = "Ok";
             this.OkChooseVar.UseVisualStyleBackColor = true;
+            this.OkChooseVar.Click += new System.EventHandler(this.OkChooseVar_Click);
             // 
             // ChooseVar
             // 

@@ -65,5 +65,10 @@ namespace WindowsFormsApp2
             
             //throw new System.NotImplementedException();
         }
+
+        private void OkChooseVar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }
