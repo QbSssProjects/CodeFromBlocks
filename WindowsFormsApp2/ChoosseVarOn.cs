@@ -244,6 +244,8 @@ namespace WindowsFormsApp2
 
         private void Ok_Click(object sender, EventArgs e)
         {
+            codeLinesList.Add(tempVarName);
+            
             this.Close();
         }
         
