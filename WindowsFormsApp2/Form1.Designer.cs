@@ -37,7 +37,6 @@
             this.For = new System.Windows.Forms.Button();
             this.maskedTextBox4 = new System.Windows.Forms.MaskedTextBox();
             this.print = new System.Windows.Forms.Button();
-            this.input = new System.Windows.Forms.Button();
             this.ifElse = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.endIf = new System.Windows.Forms.Button();
@@ -133,15 +132,7 @@
             this.print.TabIndex = 17;
             this.print.Text = "Wypisz na ekranie";
             this.print.UseVisualStyleBackColor = true;
-            // 
-            // input
-            // 
-            this.input.Location = new System.Drawing.Point(12, 413);
-            this.input.Name = "input";
-            this.input.Size = new System.Drawing.Size(161, 25);
-            this.input.TabIndex = 18;
-            this.input.Text = "Wprowadź z ekranu";
-            this.input.UseVisualStyleBackColor = true;
+            this.print.Click += new System.EventHandler(this.print_Click);
             // 
             // ifElse
             // 
@@ -163,7 +154,6 @@
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.Start);
             this.panel1.Controls.Add(this.ifElse);
-            this.panel1.Controls.Add(this.input);
             this.panel1.Controls.Add(this.print);
             this.panel1.Controls.Add(this.maskedTextBox4);
             this.panel1.Controls.Add(this.For);
@@ -252,7 +242,6 @@
         private System.Windows.Forms.Button ifElse;
 
         private System.Windows.Forms.MaskedTextBox maskedTextBox4;
-        private System.Windows.Forms.Button input;
         private System.Windows.Forms.Button print;
 
         private System.Windows.Forms.Button For;

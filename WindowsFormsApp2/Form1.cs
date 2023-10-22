@@ -641,5 +641,61 @@ namespace WindowsFormsApp2
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
         }
+
+        private void print_Click(object sender, EventArgs e)
+        {
+            Button PrintButton = new Button();
+            TextBox textBoxPrint = new TextBox();
+            Button varButton = new Button();
+            
+            PrintButton.Text = "";
+            PrintButton.Width = 283;
+            PrintButton.Height = 30;
+            PrintButton.BackColor = Color.FromArgb(255, 255, 255);
+            PrintButton.Location = new Point(ButtonLocationX, iteratorButtonY);
+            
+            textBoxPrint.Text = "Wyświetl";
+            textBoxPrint.Location = new Point(10, 8);
+            textBoxPrint.Width = 45;
+            textBoxPrint.ReadOnly = true;
+            textBoxPrint.BorderStyle = BorderStyle.None;
+            textBoxPrint.BackColor = Color.FromArgb(255, 255, 255);
+            
+            //Var1
+            varButton.Text = "Wybierz";
+            varButton.BackColor = Color.FromArgb(255, 255, 255);
+            varButton.Location = new Point(59, 5);
+            
+            buttons.Add(PrintButton);
+            textBoxesOn.Add(textBoxPrint);
+            buttons.Add(varButton);
+            
+            panel1.Controls.Add(PrintButton);
+            PrintButton.Controls.Add(textBoxPrint); //Wyświetl
+            PrintButton.Controls.Add(varButton); //Var
+            
+            PrintButton.SendToBack();
+            textBoxPrint.BringToFront();
+            varButton.BringToFront();
+            
+            PrintButton.Click += new EventHandler(PrintButton_Click);
+            varButton.Click += new EventHandler(varButton_Click);
+        }
+        
+        private void PrintButton_Click(object sender, EventArgs e)
+        {
+            ChoosseVarOn.clickedButton = sender as Button;
+            Console.Out.WriteLine(index);
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+        
+        private void varButton_Click(object sender, EventArgs e)
+        {
+            ChoosseVarOn.clickedButton = sender as Button;
+            Console.Out.WriteLine(index);
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
     }
 }
