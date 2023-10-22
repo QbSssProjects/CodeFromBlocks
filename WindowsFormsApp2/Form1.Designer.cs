@@ -40,6 +40,7 @@
             this.input = new System.Windows.Forms.Button();
             this.ifElse = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.endIf = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.Start = new System.Windows.Forms.Button();
@@ -49,7 +50,7 @@
             // 
             // newVar
             // 
-            this.newVar.Location = new System.Drawing.Point(12, 197);
+            this.newVar.Location = new System.Drawing.Point(12, 113);
             this.newVar.Name = "newVar";
             this.newVar.Size = new System.Drawing.Size(161, 25);
             this.newVar.TabIndex = 0;
@@ -59,7 +60,7 @@
             // 
             // setvar
             // 
-            this.setvar.Location = new System.Drawing.Point(12, 226);
+            this.setvar.Location = new System.Drawing.Point(12, 142);
             this.setvar.Name = "setvar";
             this.setvar.Size = new System.Drawing.Size(161, 25);
             this.setvar.TabIndex = 1;
@@ -71,7 +72,7 @@
             // 
             this.maskedTextBox1.AllowPromptAsInput = false;
             this.maskedTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox1.Location = new System.Drawing.Point(12, 180);
+            this.maskedTextBox1.Location = new System.Drawing.Point(12, 96);
             this.maskedTextBox1.Name = "maskedTextBox1";
             this.maskedTextBox1.ReadOnly = true;
             this.maskedTextBox1.Size = new System.Drawing.Size(161, 13);
@@ -84,7 +85,7 @@
             this.maskedTextBox3.AllowPromptAsInput = false;
             this.maskedTextBox3.BackColor = System.Drawing.SystemColors.Control;
             this.maskedTextBox3.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox3.Location = new System.Drawing.Point(12, 254);
+            this.maskedTextBox3.Location = new System.Drawing.Point(12, 173);
             this.maskedTextBox3.Name = "maskedTextBox3";
             this.maskedTextBox3.ReadOnly = true;
             this.maskedTextBox3.Size = new System.Drawing.Size(161, 13);
@@ -94,7 +95,7 @@
             // 
             // If
             // 
-            this.If.Location = new System.Drawing.Point(12, 273);
+            this.If.Location = new System.Drawing.Point(12, 192);
             this.If.Name = "If";
             this.If.Size = new System.Drawing.Size(161, 25);
             this.If.TabIndex = 11;
@@ -104,7 +105,7 @@
             // 
             // For
             // 
-            this.For.Location = new System.Drawing.Point(12, 352);
+            this.For.Location = new System.Drawing.Point(12, 301);
             this.For.Name = "For";
             this.For.Size = new System.Drawing.Size(161, 25);
             this.For.TabIndex = 12;
@@ -115,7 +116,7 @@
             // 
             this.maskedTextBox4.AllowPromptAsInput = false;
             this.maskedTextBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox4.Location = new System.Drawing.Point(12, 414);
+            this.maskedTextBox4.Location = new System.Drawing.Point(12, 363);
             this.maskedTextBox4.Name = "maskedTextBox4";
             this.maskedTextBox4.ReadOnly = true;
             this.maskedTextBox4.Size = new System.Drawing.Size(161, 13);
@@ -125,7 +126,7 @@
             // 
             // print
             // 
-            this.print.Location = new System.Drawing.Point(12, 433);
+            this.print.Location = new System.Drawing.Point(12, 382);
             this.print.Name = "print";
             this.print.Size = new System.Drawing.Size(161, 25);
             this.print.TabIndex = 17;
@@ -134,7 +135,7 @@
             // 
             // input
             // 
-            this.input.Location = new System.Drawing.Point(12, 464);
+            this.input.Location = new System.Drawing.Point(12, 413);
             this.input.Name = "input";
             this.input.Size = new System.Drawing.Size(161, 25);
             this.input.TabIndex = 18;
@@ -144,17 +145,19 @@
             // ifElse
             // 
             this.ifElse.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
-            this.ifElse.Location = new System.Drawing.Point(12, 302);
+            this.ifElse.Location = new System.Drawing.Point(12, 251);
             this.ifElse.Name = "ifElse";
             this.ifElse.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.ifElse.Size = new System.Drawing.Size(161, 25);
             this.ifElse.TabIndex = 22;
             this.ifElse.Text = "Jeśli / W przeciwnym wypadku";
             this.ifElse.UseVisualStyleBackColor = true;
+            this.ifElse.Click += new System.EventHandler(this.ifElse_Click);
             // 
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GrayText;
+            this.panel1.Controls.Add(this.endIf);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.Start);
@@ -173,9 +176,19 @@
             this.panel1.Size = new System.Drawing.Size(1060, 734);
             this.panel1.TabIndex = 24;
             // 
+            // endIf
+            // 
+            this.endIf.Location = new System.Drawing.Point(12, 223);
+            this.endIf.Name = "endIf";
+            this.endIf.Size = new System.Drawing.Size(161, 25);
+            this.endIf.TabIndex = 26;
+            this.endIf.Text = "Zakończenie Warunku Jeśli";
+            this.endIf.UseVisualStyleBackColor = true;
+            this.endIf.Click += new System.EventHandler(this.endIf_Click);
+            // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 383);
+            this.button1.Location = new System.Drawing.Point(12, 332);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(161, 25);
             this.button1.TabIndex = 25;
@@ -186,7 +199,7 @@
             // 
             this.maskedTextBox2.AllowPromptAsInput = false;
             this.maskedTextBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.maskedTextBox2.Location = new System.Drawing.Point(12, 333);
+            this.maskedTextBox2.Location = new System.Drawing.Point(12, 282);
             this.maskedTextBox2.Name = "maskedTextBox2";
             this.maskedTextBox2.ReadOnly = true;
             this.maskedTextBox2.Size = new System.Drawing.Size(161, 13);
@@ -201,7 +214,7 @@
             this.Start.Name = "Start";
             this.Start.Size = new System.Drawing.Size(283, 30);
             this.Start.TabIndex = 23;
-            this.Start.Text = "POCZATEK ";
+            this.Start.Text = "POCZĄTEK";
             this.Start.UseVisualStyleBackColor = false;
             this.Start.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -223,6 +236,8 @@
             this.panel1.PerformLayout();
             this.ResumeLayout(false);
         }
+
+        private System.Windows.Forms.Button endIf;
 
         private System.Windows.Forms.ContextMenu contextMenu1;
 
