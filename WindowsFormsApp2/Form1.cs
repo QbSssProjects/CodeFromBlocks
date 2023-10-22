@@ -72,11 +72,12 @@ namespace WindowsFormsApp2
 
         public static List<String> codeLinesList = new List<string>();
         
-        public static ComboBox comboBox = new ComboBox();
+        public static List<ComboBox> comboBoxesList = new List<ComboBox>();
         
         public static Button buttonSetOn = new Button();
 
         public static String tempVarName;
+        public static String tempVarNameDone;
         
         // Konstruktor domyślny
         public Form1()
@@ -84,7 +85,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
-        // Obsługa kliknięcia przycisku "button1" (POCZĄTEK)
+        // Obsługa kliknięcia przycisku "button1" (POCZĄTEK) - zaznaczenie
         private void button1_Click(object sender, EventArgs e)
         {
             Button buttonStart = sender as Button;
@@ -130,9 +131,7 @@ namespace WindowsFormsApp2
                 // Dodawanie informacji o zmiennej do tablicy
                 varsTable[newVarIterator] = varName + ": " + varVar;
                 newVarIterator++;
-                
-                codeLinesList.Insert(0, varName + " = " + varVar);
-                
+
 
                 /*Button varSetted = new Button();
                 varSetted.Text = "Ustawiono wartość " + varName + " na: " + varVar;
@@ -150,13 +149,14 @@ namespace WindowsFormsApp2
         }
 
         // Obsługa kliknięcia przycisku "setvar"
-        void setvar_Click_1(object sender, EventArgs e)
+        void setvar_Click(object sender, EventArgs e)
         {
             // Tworzenie nowego przycisku
             Button newButton = new Button();
             
             TextBox textBoxSet = new TextBox();
             TextBox textBoxOn = new TextBox();
+            ComboBox comboBox = new ComboBox();
             
             
             
@@ -232,25 +232,40 @@ namespace WindowsFormsApp2
             else
             {
                 tempVarName = comboBox.SelectedItem.ToString();
+                Console.Write(tempVarName);
                 buttonSetOn.Enabled = true;
             }
         }
 
         private void SelectedIndexChangedSetVar(object sender, EventArgs e)
         {
-            if (comboBox.SelectedItem == null)
+            ComboBox comboBoxTemp = sender as ComboBox;
+            
+            if (comboBoxTemp.SelectedItem == null)
             {
                 buttonSetOn.Enabled = false;
             }
             else
             {
 
-                
+                tempVarName = comboBoxTemp.SelectedItem.ToString();
+                Console.Write(tempVarName);
+                string[] parts = tempVarName.Split(':');
+                tempVarNameDone = parts[0];
                 buttonSetOn.Enabled = true;
             }
         }
         
-        //Obsługa kliknięcia na przycisk newVarButton
+        // Obsługa kliknięcia na nowym przycisku
+        private void buttonSetOn_Click(object sender, EventArgs e)
+        {
+            index = buttonsSetOn.IndexOf(sender as Button);
+            
+            var ChooseForm = new ChoosseVarOn();
+            ChooseForm.Show();
+        }
+        
+        //Obsługa kliknięcia na przycisk newVarButton - zaznaczenie
         private void newVarButton_Click(object sender, EventArgs e)
         {
             Button newVarButton = sender as Button;
@@ -265,6 +280,17 @@ namespace WindowsFormsApp2
                 newVarButton.BackColor = Color.FromArgb(255, 255, 255);
                 isNewVarButtonClicked = false;
             }
+        }
+        
+        // Obsługa kliknięcia na ComboBox zmiennych "comboBox"
+        private void comboBox_Click(object sender, EventArgs e) 
+        {
+            ComboBox comboBox = sender as ComboBox;
+            
+            // Wymuszenie rozwinięcia "comboBox" i aktualizacja źródła danych
+            comboBox.DroppedDown = true;
+            comboBox.DataSource = null;
+            comboBox.DataSource = varsTable;
         }
         
         //Obsługa przycisku If (Jeśli)
@@ -348,27 +374,7 @@ namespace WindowsFormsApp2
             iteratorButtonY += 30;
         }
         
-        // Obsługa kliknięcia na ComboBox "comboBox"
-        private void comboBox_Click(object sender, EventArgs e) 
-        {
-            ComboBox comboBox = sender as ComboBox;
-            
-            // Wymuszenie rozwinięcia "comboBox" i aktualizacja źródła danych
-            comboBox.DroppedDown = true;
-            comboBox.DataSource = null;
-            comboBox.DataSource = varsTable;
-        }
-
-        // Obsługa kliknięcia na nowym przycisku
-        private void buttonSetOn_Click(object sender, EventArgs e)
-        {
-            index = buttonsSetOn.IndexOf(sender as Button);
-            Console.Out.WriteLine(index);
-            
-            var ChooseForm = new ChoosseVarOn();
-            ChooseForm.Show();
-        }
-
+        //Obsługa przycisku IfButton - zaznaczenie
         private void IfButton_Click(object sender, EventArgs e)
         {
             Button IfButton = sender as Button;
@@ -387,13 +393,16 @@ namespace WindowsFormsApp2
 
         private void endIf_Click(object sender, EventArgs e)
         {
-            if (ButtonLocationX < 488)
+            if (ButtonLocationX <= 488)
             {
                 ButtonLocationX = 488;
                 MessageBox.Show("Jesteś w programie głównym. Zamknąłeś ostatni warunek \"Jeśli\"");
             }
-            ButtonLocationX -= 36;
-            MessageBox.Show("Wyszedłeś/aś z warunku");
+            else
+            {
+                ButtonLocationX -= 36;
+                MessageBox.Show("Wyszedłeś/aś z warunku");
+            }
         }
 
         private void ifElse_Click(object sender, EventArgs e)
@@ -514,7 +523,7 @@ namespace WindowsFormsApp2
             ComboBox comboBoxIterator = new ComboBox();
             ComboBox comboBoxFor = new ComboBox();
             TextBox textBoxFor = new TextBox();
-            TextBox textBoxThen = new TextBox();
+            Button timesButton = new Button();
             
             
             ForButton.Text = "";
@@ -523,23 +532,22 @@ namespace WindowsFormsApp2
             ForButton.BackColor = Color.FromArgb(255, 255, 255);
             ForButton.Location = new Point(ButtonLocationX, iteratorButtonY);
             
-
+            timesButton.Text = "Wybierz";
+            timesButton.Width = 57; 
+            timesButton.Height = 23;
+            timesButton.BackColor = Color.FromArgb(255, 255, 255);
+            timesButton.Location = new Point(218, 5);
+            
             textBoxFor.Text = "Wkonuj dopóki";
             textBoxFor.Location = new Point(3, 8);
-            textBoxFor.Width = 80;
+            textBoxFor.Width = 75;
             textBoxFor.ReadOnly = true;
             textBoxFor.BorderStyle = BorderStyle.None;
             textBoxFor.BackColor = Color.FromArgb(255, 255, 255);
             
-            textBoxThen.Text = "to:";
-            textBoxThen.Location = new Point(263, 8);
-            textBoxThen.Width = 15;
-            textBoxThen.ReadOnly = true;
-            textBoxThen.BorderStyle = BorderStyle.None;
-            textBoxThen.BackColor = Color.FromArgb(255, 255, 255);
             
-            comboBoxIterator.Location = new Point(86, 5);
-            comboBoxFor.Location = new Point(174, 5);
+            comboBoxIterator.Location = new Point(77, 5);
+            comboBoxFor.Location = new Point(165, 5);
             
             comboBoxIterator.Click += new EventHandler(comboBox_Click);
             
@@ -548,7 +556,8 @@ namespace WindowsFormsApp2
             comboBoxes.Add(comboBoxIterator);
             comboBoxes.Add(comboBoxFor);
             textBoxesOn.Add(textBoxFor);
-            textBoxesOn.Add(textBoxThen);
+            buttons.Add(timesButton);
+            
             
             // Dodanie przycisku do formularza
             comboBoxIterator.Width = 85;
@@ -559,23 +568,123 @@ namespace WindowsFormsApp2
             ForButton.Controls.Add(textBoxFor); //Jeśli
             ForButton.Controls.Add(comboBoxIterator); //Var1
             ForButton.Controls.Add(comboBoxFor);  //Warunek
-            ForButton.Controls.Add(textBoxThen); //To: 
+            ForButton.Controls.Add(timesButton);  //Var2
             
             
             ForButton.SendToBack();
             textBoxFor.BringToFront();
             comboBoxIterator.BringToFront();
             comboBoxFor.BringToFront();
-            textBoxThen.BringToFront();
+            timesButton.BringToFront();
             
             comboBoxIterator.DataSource = null;
             comboBoxIterator.DataSource = varsTable;
             comboBoxFor.DataSource = forOperators;
             
             ForButton.Click += new EventHandler(IfButton_Click);
+            timesButton.Click += new EventHandler(timesButton_Click);
 
             ButtonLocationX += 36;
             iteratorButtonY += 30;
+        }
+        
+        private void timesButton_Click(object sender, EventArgs e)
+        {
+            ChoosseVarOn.clickedButton = sender as Button;
+            Console.Out.WriteLine(index);
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+
+        private void While_Click(object sender, EventArgs e)
+        {
+            //WHILE
+            // Tworzenie nowego przycisku
+            Button WhileButton = new Button();
+            TextBox textBoxWhile = new TextBox();
+            Button var1Button = new Button();
+            ComboBox comboBoxIf = new ComboBox();
+            Button var2Button = new Button();
+            
+            WhileButton.Text = "";
+            WhileButton.Width = 283;
+            WhileButton.Height = 30;
+            WhileButton.BackColor = Color.FromArgb(255, 255, 255);
+            WhileButton.Location = new Point(ButtonLocationX, iteratorButtonY);
+            
+            textBoxWhile.Text = "Wykonuj dopóki";
+            textBoxWhile.Location = new Point(3, 8);
+            textBoxWhile.Width = 80;
+            textBoxWhile.ReadOnly = true;
+            textBoxWhile.BorderStyle = BorderStyle.None;
+            textBoxWhile.BackColor = Color.FromArgb(255, 255, 255);
+            
+            //Var1
+            var1Button.Text = "Wybierz";
+            var1Button.Width = 57; 
+            var1Button.Height = 23;
+            var1Button.BackColor = Color.FromArgb(255, 255, 255);
+            var1Button.Location = new Point(83, 5);
+            
+            comboBoxIf.Location = new Point(143, 5);
+            
+            //Var2
+            var2Button.Text = "Wybierz";
+            var2Button.Width = 57; 
+            var2Button.Height = 23;
+            var2Button.BackColor = Color.FromArgb(255, 255, 255);
+            var2Button.Location = new Point(196, 5);
+            
+            
+            // Dodanie przycisku do listy przycisków
+            buttons.Add(WhileButton);
+            comboBoxes.Add(comboBoxIf);
+            textBoxesOn.Add(textBoxWhile);
+            buttons.Add(var1Button);
+            buttons.Add(var2Button);
+            
+            
+            // Dodanie comboboxa do formularza
+            comboBoxIf.Width = 50;
+            
+            //Dodanie kontrolek do formularza
+            panel1.Controls.Add(WhileButton);
+            WhileButton.Controls.Add(textBoxWhile); //Jeśli
+            WhileButton.Controls.Add(comboBoxIf);  //Warunek
+            WhileButton.Controls.Add(var1Button);  //Var1
+            WhileButton.Controls.Add(var2Button);  //Var2
+            
+            
+            WhileButton.SendToBack();
+            textBoxWhile.BringToFront();
+            var1Button.BringToFront();
+            comboBoxIf.BringToFront();
+            var2Button.BringToFront();
+            
+            comboBoxIf.DataSource = forOperators;
+            
+            WhileButton.Click += new EventHandler(IfButton_Click);
+            var1Button.Click += new EventHandler(var1Button_Click);
+            var2Button.Click += new EventHandler(var2Button_Click);
+
+            ButtonLocationX += 36;
+            iteratorButtonY += 30;
+        }
+        
+        private void var1Button_Click(object sender, EventArgs e)
+        {
+            ChoosseVarOn.clickedButton = sender as Button;
+            Console.Out.WriteLine(index);
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
+        }
+        
+        private void var2Button_Click(object sender, EventArgs e)
+        {
+            ChoosseVarOn.clickedButton = sender as Button;
+            Console.Out.WriteLine(index);
+            var ChooseForm = new ChooseVar();
+            ChooseForm.Show();
         }
     }
 }
