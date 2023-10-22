@@ -44,6 +44,7 @@ namespace WindowsFormsApp2
         
         // Flaga wskazująca, czy przycisk "start" został kliknięty
         private bool isButtonStartClicked = false;
+        private bool isIfButtonClicked = false;
 
         // Listy kontrolki GUI
         private List<Button> buttons = new List<Button>();
@@ -203,7 +204,7 @@ namespace WindowsFormsApp2
         }
 
         // Obsługa kliknięcia na ComboBox "comboBox"
-        private void comboBox_Click(object sender, EventArgs e)
+        private void comboBox_Click(object sender, EventArgs e) 
         {
             ComboBox comboBox = sender as ComboBox;
             
@@ -227,8 +228,11 @@ namespace WindowsFormsApp2
         {
             // Tworzenie nowego przycisku
             Button IfButton = new Button();
-            ComboBox comboBox = new ComboBox();
+            ComboBox comboBoxVar = new ComboBox();
+            ComboBox comboBoxVar1 = new ComboBox();
+            ComboBox comboBoxIf = new ComboBox();
             TextBox textBoxIf = new TextBox();
+            TextBox textBoxThen = new TextBox();
             
             
             IfButton.Text = "";
@@ -240,27 +244,77 @@ namespace WindowsFormsApp2
 
             textBoxIf.Text = "Jezeli";
             textBoxIf.Location = new Point(3, 8);
-            textBoxIf.Width = 37;
+            textBoxIf.Width = 33;
             textBoxIf.ReadOnly = true;
             textBoxIf.BorderStyle = BorderStyle.None;
             textBoxIf.BackColor = Color.FromArgb(255, 255, 255);
             
-            comboBox.Location = new Point(40, 5);
+            textBoxThen.Text = "to:";
+            textBoxThen.Location = new Point(263, 8);
+            textBoxThen.Width = 15;
+            textBoxThen.ReadOnly = true;
+            textBoxThen.BorderStyle = BorderStyle.None;
+            textBoxThen.BackColor = Color.FromArgb(255, 255, 255);
             
-            comboBox.Click += new EventHandler(comboBox_Click);
+            comboBoxVar.Location = new Point(34, 5);
+            comboBoxIf.Location = new Point(122, 5);
+            comboBoxVar1.Location = new Point(175, 5);
+            
+            comboBoxVar.Click += new EventHandler(comboBox_Click);
+            comboBoxVar1.Click += new EventHandler(comboBox_Click);
             
             // Dodanie przycisku do listy przycisków
             buttons.Add(IfButton);
-            comboBoxes.Add(comboBox);
+            comboBoxes.Add(comboBoxVar);
+            comboBoxes.Add(comboBoxVar1);
+            comboBoxes.Add(comboBoxIf);
             textBoxesOn.Add(textBoxIf);
+            textBoxesOn.Add(textBoxThen);
             
             // Dodanie przycisku do formularza
-            comboBox.Width = 100;
+            comboBoxVar.Width = 85;
+            comboBoxVar1.Width = 85;
+            comboBoxIf.Width = 50;
             
             //Dodanie kontrolek do formularza
             panel1.Controls.Add(IfButton);
-            IfButton.Controls.Add(comboBox);
-            IfButton.Controls.Add(textBoxIf);
+            IfButton.Controls.Add(textBoxIf); //Jeśli
+            IfButton.Controls.Add(comboBoxVar); //Var1
+            IfButton.Controls.Add(comboBoxIf);  //Warunek
+            IfButton.Controls.Add(comboBoxVar1);//Var2
+            IfButton.Controls.Add(textBoxThen); //To: 
+            
+            
+            IfButton.SendToBack();
+            textBoxIf.BringToFront();
+            comboBoxVar.BringToFront();
+            comboBoxIf.BringToFront();
+            comboBoxVar1.BringToFront();
+            textBoxThen.BringToFront();
+            
+            comboBoxVar.DataSource = null;
+            comboBoxVar.DataSource = varsTable;
+            comboBoxVar1.DataSource = null;
+            comboBoxVar1.DataSource = varsTable;
+            
+            IfButton.Click += new EventHandler(IfButton_Click);
+
+            iteratorButtonY += 30;
+        }
+        private void IfButton_Click(object sender, EventArgs e)
+        {
+            Button IfButton = sender as Button;
+
+            if (!isIfButtonClicked)
+            {
+                IfButton.BackColor = Color.Yellow;
+                isIfButtonClicked = true;
+            }
+            else
+            {
+                IfButton.BackColor = Color.FromArgb(255, 255, 255);
+                isIfButtonClicked = false;
+            }
         }
     }
 }
