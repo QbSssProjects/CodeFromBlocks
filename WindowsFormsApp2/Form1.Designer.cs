@@ -41,7 +41,7 @@
             this.ifElse = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.endIf = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.While = new System.Windows.Forms.Button();
             this.maskedTextBox2 = new System.Windows.Forms.MaskedTextBox();
             this.Start = new System.Windows.Forms.Button();
             this.contextMenu1 = new System.Windows.Forms.ContextMenu();
@@ -66,7 +66,7 @@
             this.setvar.TabIndex = 1;
             this.setvar.Text = "Ustaw zmienna";
             this.setvar.UseVisualStyleBackColor = true;
-            this.setvar.Click += new System.EventHandler(this.setvar_Click_1);
+            this.setvar.Click += new System.EventHandler(this.setvar_Click);
             // 
             // maskedTextBox1
             // 
@@ -159,7 +159,7 @@
             // 
             this.panel1.BackColor = System.Drawing.SystemColors.GrayText;
             this.panel1.Controls.Add(this.endIf);
-            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.While);
             this.panel1.Controls.Add(this.maskedTextBox2);
             this.panel1.Controls.Add(this.Start);
             this.panel1.Controls.Add(this.ifElse);
@@ -187,14 +187,15 @@
             this.endIf.UseVisualStyleBackColor = true;
             this.endIf.Click += new System.EventHandler(this.endIf_Click);
             // 
-            // button1
+            // While
             // 
-            this.button1.Location = new System.Drawing.Point(12, 332);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(161, 25);
-            this.button1.TabIndex = 25;
-            this.button1.Text = "Wykonuj dopóki";
-            this.button1.UseVisualStyleBackColor = true;
+            this.While.Location = new System.Drawing.Point(12, 332);
+            this.While.Name = "While";
+            this.While.Size = new System.Drawing.Size(161, 25);
+            this.While.TabIndex = 25;
+            this.While.Text = "Wykonuj dopóki";
+            this.While.UseVisualStyleBackColor = true;
+            this.While.Click += new System.EventHandler(this.While_Click);
             // 
             // maskedTextBox2
             // 
@@ -242,7 +243,7 @@
 
         private System.Windows.Forms.ContextMenu contextMenu1;
 
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button While;
 
         private System.Windows.Forms.Button Start;
 
