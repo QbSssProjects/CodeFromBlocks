@@ -8,7 +8,19 @@ namespace WindowsFormsApp2
 {
     public partial class ChoosseVarOn : Form
     {
-        public static int varSeted;
+        public static string varSeted;
+        public static string add1Value;
+        public static string add2Value;
+        public static string sub1Value;
+        public static string sub2Value;
+        public static string multiply1Value;
+        public static string multiply2Value;
+        public static string div1Value;
+        public static string div2Value;
+        public static string mod1Value;
+        public static string mod2Value;
+
+        public static int tempVarVar;
         
         public static Button clickedButton;
         
@@ -236,7 +248,7 @@ namespace WindowsFormsApp2
         
         private void OnNumer_ValueChanged(object sender, EventArgs e)
         {
-            varSeted = (int)OnNumer.Value;
+            varSeted = OnNumer.Value.ToString();
             //Console.Out.WriteLine(varSeted);
             buttonsSetOn[index].Text = varSeted.ToString();
 
@@ -245,8 +257,24 @@ namespace WindowsFormsApp2
 
         private void Ok_Click(object sender, EventArgs e)
         {
+            if (Add1.Enabled == true)
+            {
+                add1Value = tempVarName;
+            }
+            
+            string[] parts = tempVarName.Split(':');
+            tempVarNameDone = parts[0];
+            
+            int.TryParse(parts[1],out tempVarVar);
+            
+            Console.Out.WriteLine("wartość: " + tempVarVar);
             // TUTAJ MASZ OGARNIETE TTYLKO DLA LICZBY WBRAN EJ 9OSTATNIA OPCJA)
             codeLinesList.Add(tempVarNameDone + " = " + OnNumer.Value);
+
+            foreach (var cokolwiek in codeLinesList)
+            {
+                Console.Out.WriteLine(cokolwiek);
+            }
             
             this.Close();
         }
@@ -254,6 +282,8 @@ namespace WindowsFormsApp2
         //Wywoływanie okna ChooseVar
         private void Add1_Click(object sender, EventArgs e)
         {
+            add1Value = Add1.Text;
+            
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -261,6 +291,8 @@ namespace WindowsFormsApp2
 
         private void Add2_Click(object sender, EventArgs e)
         {
+            add2Value = Add2.Text;
+            
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -268,6 +300,8 @@ namespace WindowsFormsApp2
 
         private void Sub1_Click(object sender, EventArgs e)
         {
+            sub1Value = Sub1.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -275,6 +309,8 @@ namespace WindowsFormsApp2
 
         private void Sub2_Click(object sender, EventArgs e)
         {
+            sub2Value = Sub2.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -282,6 +318,8 @@ namespace WindowsFormsApp2
 
         private void Multipy1_Click(object sender, EventArgs e)
         {
+            multiply1Value = Multipy1.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -289,6 +327,8 @@ namespace WindowsFormsApp2
 
         private void Multipy2_Click(object sender, EventArgs e)
         {
+            multiply2Value = Multipy2.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -296,6 +336,8 @@ namespace WindowsFormsApp2
 
         private void Div1_Click(object sender, EventArgs e)
         {
+            div1Value = Div1.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -303,6 +345,8 @@ namespace WindowsFormsApp2
 
         private void Div2_Click(object sender, EventArgs e)
         {
+            div2Value = Div2.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -310,6 +354,8 @@ namespace WindowsFormsApp2
 
         private void Mod1_Click(object sender, EventArgs e)
         {
+            mod1Value = Mod1.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();
@@ -317,6 +363,8 @@ namespace WindowsFormsApp2
 
         private void Mod2_Click(object sender, EventArgs e)
         {
+            mod2Value = Mod2.Text;
+
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
             ChooseForm.Show();

@@ -249,7 +249,7 @@ namespace WindowsFormsApp2
             {
 
                 tempVarName = comboBoxTemp.SelectedItem.ToString();
-                Console.Write(tempVarName);
+                //Console.Write(tempVarName);
                 string[] parts = tempVarName.Split(':');
                 tempVarNameDone = parts[0];
                 buttonSetOn.Enabled = true;

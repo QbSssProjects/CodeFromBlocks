@@ -47,20 +47,7 @@ namespace WindowsFormsApp2
 
         private void comboBoxChooseVar_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int selectedIndex = comboBoxChooseVar.SelectedIndex;
-            var selectedVar = comboBoxChooseVar.SelectedItem as string; // Rzutujemy na string
-            var splitItems = selectedVar.Split(new string[] { ": " }, StringSplitOptions.None);
-            if (int.TryParse(splitItems[1], out int result))
-            {
-                Console.Out.WriteLine(result);
-            }
-            else
-            {
-                Console.Out.WriteLine("Error! Cannot Convert splitItem to int");
-            }
-            
-            int numberSetedValue1 = result;
-            ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
+            ChoosseVarOn.clickedButton.Text = comboBoxChooseVar.SelectedItem as string;
         }
 
         private void OkChooseVar_Click(object sender, EventArgs e)
