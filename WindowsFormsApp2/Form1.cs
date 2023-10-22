@@ -35,6 +35,7 @@ namespace WindowsFormsApp2
         // Tablica do przechowywania informacji o zmiennych jako ciągów znaków
         public static string[] varsTable = new string[500];
         public static string[] ifOperators = { "==", "<=", ">=", "!=", "<", ">" };
+        public static string[] forOperators = { "<=", ">=", "<", ">" };
         
         // Flaga wskazująca, czy przycisk jest przesuwany
         private bool isButtonMoving = false;
@@ -463,6 +464,78 @@ namespace WindowsFormsApp2
             
             ElseButton.SendToBack();
             textBoxElse.BringToFront();
+        }
+
+        private void For_Click(object sender, EventArgs e)
+        {
+            //FOR
+            // Tworzenie nowego przycisku
+            Button ForButton = new Button();
+            ComboBox comboBoxIterator = new ComboBox();
+            ComboBox comboBoxFor = new ComboBox();
+            TextBox textBoxFor = new TextBox();
+            TextBox textBoxThen = new TextBox();
+            
+            
+            ForButton.Text = "";
+            ForButton.Width = 283;
+            ForButton.Height = 30;
+            ForButton.BackColor = Color.FromArgb(255, 255, 255);
+            ForButton.Location = new Point(ButtonLocationX, iteratorButtonY);
+            
+
+            textBoxFor.Text = "Wkonuj dopóki";
+            textBoxFor.Location = new Point(3, 8);
+            textBoxFor.Width = 80;
+            textBoxFor.ReadOnly = true;
+            textBoxFor.BorderStyle = BorderStyle.None;
+            textBoxFor.BackColor = Color.FromArgb(255, 255, 255);
+            
+            textBoxThen.Text = "to:";
+            textBoxThen.Location = new Point(263, 8);
+            textBoxThen.Width = 15;
+            textBoxThen.ReadOnly = true;
+            textBoxThen.BorderStyle = BorderStyle.None;
+            textBoxThen.BackColor = Color.FromArgb(255, 255, 255);
+            
+            comboBoxIterator.Location = new Point(86, 5);
+            comboBoxFor.Location = new Point(174, 5);
+            
+            comboBoxIterator.Click += new EventHandler(comboBox_Click);
+            
+            // Dodanie przycisku do listy przycisków
+            buttons.Add(ForButton);
+            comboBoxes.Add(comboBoxIterator);
+            comboBoxes.Add(comboBoxFor);
+            textBoxesOn.Add(textBoxFor);
+            textBoxesOn.Add(textBoxThen);
+            
+            // Dodanie przycisku do formularza
+            comboBoxIterator.Width = 85;
+            comboBoxFor.Width = 50;
+            
+            //Dodanie kontrolek do formularza
+            panel1.Controls.Add(ForButton);
+            ForButton.Controls.Add(textBoxFor); //Jeśli
+            ForButton.Controls.Add(comboBoxIterator); //Var1
+            ForButton.Controls.Add(comboBoxFor);  //Warunek
+            ForButton.Controls.Add(textBoxThen); //To: 
+            
+            
+            ForButton.SendToBack();
+            textBoxFor.BringToFront();
+            comboBoxIterator.BringToFront();
+            comboBoxFor.BringToFront();
+            textBoxThen.BringToFront();
+            
+            comboBoxIterator.DataSource = null;
+            comboBoxIterator.DataSource = varsTable;
+            comboBoxFor.DataSource = forOperators;
+            
+            ForButton.Click += new EventHandler(IfButton_Click);
+
+            ButtonLocationX += 36;
+            iteratorButtonY += 30;
         }
     }
 }

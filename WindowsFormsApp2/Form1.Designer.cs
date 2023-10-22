@@ -111,6 +111,7 @@
             this.For.TabIndex = 12;
             this.For.Text = "Wykonaj x razy";
             this.For.UseVisualStyleBackColor = true;
+            this.For.Click += new System.EventHandler(this.For_Click);
             // 
             // maskedTextBox4
             // 
