@@ -346,6 +346,11 @@ namespace WindowsFormsApp2
 
         private void endIf_Click(object sender, EventArgs e)
         {
+            if (ButtonLocationX < 488)
+            {
+                ButtonLocationX = 488;
+                MessageBox.Show("Jesteś w programie głównym. Zamknąłeś ostatni warunek \"Jeśli\"");
+            }
             ButtonLocationX -= 36;
             MessageBox.Show("Wyszedłeś/aś z warunku");
         }
