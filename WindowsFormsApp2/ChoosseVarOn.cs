@@ -251,7 +251,7 @@ namespace WindowsFormsApp2
             this.Close();
         }
         
-        //Wywoływanie okna ChooseVar
+        //Wywoływanie okna ChooseVar KOM1
         private void Add1_Click(object sender, EventArgs e)
         {
             clickedButton = sender as Button;
