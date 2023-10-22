@@ -256,7 +256,7 @@ namespace WindowsFormsApp2
             }
         }
         
-        // Obsługa kliknięcia na nowym przycisku
+        // Obsługa kliknięcia na nowym przycisku 2
         private void buttonSetOn_Click(object sender, EventArgs e)
         {
             index = buttonsSetOn.IndexOf(sender as Button);
