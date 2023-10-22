@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 using System.Collections.Generic;
+using System.Linq;
 using static WindowsFormsApp2.Form1;
 
 namespace WindowsFormsApp2
@@ -244,6 +245,9 @@ namespace WindowsFormsApp2
 
         private void Ok_Click(object sender, EventArgs e)
         {
+            // TUTAJ MASZ OGARNIETE TTYLKO DLA LICZBY WBRAN EJ 9OSTATNIA OPCJA)
+            codeLinesList.Add(tempVarNameDone + " = " + OnNumer.Value);
+            
             this.Close();
         }
         

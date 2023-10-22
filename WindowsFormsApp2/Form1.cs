@@ -12,6 +12,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.Reflection;
 using System.Runtime.Remoting.Channels;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
@@ -67,6 +68,16 @@ namespace WindowsFormsApp2
         public static int index;
 
         private bool flagVarAccepted = true;
+
+
+        public static List<String> codeLinesList = new List<string>();
+        
+        public static List<ComboBox> comboBoxesList = new List<ComboBox>();
+        
+        public static Button buttonSetOn = new Button();
+
+        public static String tempVarName;
+        public static String tempVarNameDone;
         
         // Konstruktor domyślny
         public Form1()
@@ -138,14 +149,15 @@ namespace WindowsFormsApp2
         }
 
         // Obsługa kliknięcia przycisku "setvar"
-        private void setvar_Click(object sender, EventArgs e)
+        void setvar_Click(object sender, EventArgs e)
         {
             // Tworzenie nowego przycisku
             Button newButton = new Button();
-            ComboBox comboBox = new ComboBox();
+            
             TextBox textBoxSet = new TextBox();
             TextBox textBoxOn = new TextBox();
-            Button buttonSetOn = new Button();
+            ComboBox comboBox = new ComboBox();
+            
             
             
             newButton.Text = "";
@@ -204,17 +216,50 @@ namespace WindowsFormsApp2
             comboBox.DataSource = varsTable;
 
             newButton.Click += new EventHandler(newVarButton_Click);
+            comboBox.SelectedIndexChanged += new EventHandler(SelectedIndexChangedSetVar);
             
             iteratorButtonY += 30;
 
             //buttonSetOn.Tag = buttonsSetOn.IndexOf(buttonSetOn);
+            
+            
+             
+            
+            if (comboBox.SelectedItem == null)
+            {
+                buttonSetOn.Enabled = false;
+            }
+            else
+            {
+                tempVarName = comboBox.SelectedItem.ToString();
+                Console.Write(tempVarName);
+                buttonSetOn.Enabled = true;
+            }
+        }
+
+        private void SelectedIndexChangedSetVar(object sender, EventArgs e)
+        {
+            ComboBox comboBoxTemp = sender as ComboBox;
+            
+            if (comboBoxTemp.SelectedItem == null)
+            {
+                buttonSetOn.Enabled = false;
+            }
+            else
+            {
+
+                tempVarName = comboBoxTemp.SelectedItem.ToString();
+                Console.Write(tempVarName);
+                string[] parts = tempVarName.Split(':');
+                tempVarNameDone = parts[0];
+                buttonSetOn.Enabled = true;
+            }
         }
         
         // Obsługa kliknięcia na nowym przycisku
         private void buttonSetOn_Click(object sender, EventArgs e)
         {
             index = buttonsSetOn.IndexOf(sender as Button);
-            Console.Out.WriteLine(index);
             
             var ChooseForm = new ChoosseVarOn();
             ChooseForm.Show();
