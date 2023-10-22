@@ -19,7 +19,7 @@ namespace WindowsFormsApp2
             InitializeComponent();
         }
 
-        //dodawanie
+        //dodawaniexD
         private void AddRadio_CheckedChanged(object sender, EventArgs e)
         {
             if (Add1.Enabled == false && Add2.Enabled == false)
