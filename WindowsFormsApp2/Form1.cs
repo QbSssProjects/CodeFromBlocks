@@ -77,6 +77,7 @@ namespace WindowsFormsApp2
         public static Button buttonSetOn = new Button();
 
         public static String tempVarName;
+        public static String tempVarName2;
         public static String tempVarNameDone;
         
         // Konstruktor domyślny

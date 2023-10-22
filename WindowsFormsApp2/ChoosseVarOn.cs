@@ -20,7 +20,8 @@ namespace WindowsFormsApp2
         public static string mod1Value;
         public static string mod2Value;
 
-        public static int tempVarVar;
+        public static int tempVarVar1;
+        public static int tempVarVar2;
         
         public static Button clickedButton;
         
@@ -260,21 +261,26 @@ namespace WindowsFormsApp2
             if (Add1.Enabled == true)
             {
                 add1Value = tempVarName;
+                Console.Out.WriteLine("Po sprawdzeniu warunku: " + tempVarName);
+
+                add2Value = tempVarName2;
             }
             
-            string[] parts = tempVarName.Split(':');
-            tempVarNameDone = parts[0];
+            string[] parts1 = tempVarName.Split(':');
+            tempVarNameDone = parts1[0];
+            Console.Out.WriteLine("tempVarNameDone: " + tempVarNameDone);
             
-            int.TryParse(parts[1],out tempVarVar);
+            int.TryParse(parts1[1],out tempVarVar1);
             
-            Console.Out.WriteLine("wartość: " + tempVarVar);
+            Console.Out.WriteLine("wartość po split: " + tempVarVar1);
             // TUTAJ MASZ OGARNIETE TTYLKO DLA LICZBY WBRAN EJ 9OSTATNIA OPCJA)
-            codeLinesList.Add(tempVarNameDone + " = " + OnNumer.Value);
-
+            codeLinesList.Add(tempVarNameDone + " = " + tempVarVar1);
+            
             foreach (var cokolwiek in codeLinesList)
             {
                 Console.Out.WriteLine(cokolwiek);
             }
+            
             
             this.Close();
         }
@@ -283,6 +289,8 @@ namespace WindowsFormsApp2
         private void Add1_Click(object sender, EventArgs e)
         {
             add1Value = Add1.Text;
+            
+            Console.Out.WriteLine("pierwotna wartość: "+add1Value);
             
             clickedButton = sender as Button;
             var ChooseForm = new ChooseVar();
