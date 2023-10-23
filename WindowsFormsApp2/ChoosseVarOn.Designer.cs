@@ -332,6 +332,7 @@ namespace WindowsFormsApp2
             this.OnVar.Name = "OnVar";
             this.OnVar.Size = new System.Drawing.Size(175, 21);
             this.OnVar.TabIndex = 27;
+            this.OnVar.Click += new System.EventHandler(this.OnVar_Clicked);
             // 
             // Ok
             // 

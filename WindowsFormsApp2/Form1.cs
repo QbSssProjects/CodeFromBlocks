@@ -76,9 +76,8 @@ namespace WindowsFormsApp2
         
         public static Button buttonSetOn = new Button();
 
-        public static String tempVarName;
-        public static String tempVarName2;
-        public static String tempVarNameDone;
+        public static String ComboBoxVar;
+        public static String ComboBoxVarName;
         
         // Konstruktor domyślny
         public Form1()
@@ -108,45 +107,50 @@ namespace WindowsFormsApp2
         {
             // Wyświetlanie okna dialogowego do wprowadzenia nazwy i wartości zmiennej
             string varName = Microsoft.VisualBasic.Interaction.InputBox("Podaj nazwę zmiennej ", "Tworzenie zmiennej");
-            var varVarStr = Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość zmiennej", "Tworzenie zmiennej", "0");
-
-
-            int varVar;
-            if (int.TryParse(varVarStr, out varVar))
-             {
-                 flagVarAccepted = true;
-                Console.Out.WriteLine(varVar);
-             }
-             else
-            {
-                flagVarAccepted = false;
-                MessageBox.Show("BŁĄD! PODAJ WARTOŚĆ LICZBOWĄ");
-            }
-
-            if (flagVarAccepted)
-            {
-                MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar);
             
-                Console.Out.WriteLine("[ID: " + newVarIterator + "] " + varName + " o wartosci: " + varVar);
-
-                // Dodawanie informacji o zmiennej do tablicy
-                varsTable[newVarIterator] = varName + ": " + varVar;
-                newVarIterator++;
-
-
-                /*Button varSetted = new Button();
-                varSetted.Text = "Ustawiono wartość " + varName + " na: " + varVar;
-                varSetted.Width = 283;
-                varSetted.Height = 30;
-                varSetted.BackColor = Color.FromArgb(255, 255, 255);
-                varSetted.Location = new Point(488, iteratorButtonY);
-
-                iteratorButtonY += 30;
-                varSettedButtons.Add(varSetted);
-                
-                panel1.Controls.Add(varSetted);*/
+            if (varName == "")
+            {
+                MessageBox.Show("BŁĄD! PODAJ NAZWĘ ZMIENNEJ");
             }
+            else
+            {
+                var varVarStr = Microsoft.VisualBasic.Interaction.InputBox("Podaj wartość zmiennej", "Tworzenie zmiennej", "0");
+                int varVar;
+                if (int.TryParse(varVarStr, out varVar))
+                {
+                    flagVarAccepted = true;
+                    Console.Out.WriteLine(varVar);
+                }
+                else
+                {
+                    flagVarAccepted = false;
+                    MessageBox.Show("BŁĄD! PODAJ WARTOŚĆ LICZBOWĄ");
+                }
+
+                if (flagVarAccepted)
+                {
+                    MessageBox.Show("Utworzono zmienną o nazwie: " + varName + ", o wartości: " + varVar);
             
+                    Console.Out.WriteLine("[ID: " + newVarIterator + "] " + varName + " o wartosci: " + varVar);
+
+                    // Dodawanie informacji o zmiennej do tablicy
+                    varsTable[newVarIterator] = varName + ": " + varVar;
+                    newVarIterator++;
+
+
+                    /*Button varSetted = new Button();
+                    varSetted.Text = "Ustawiono wartość " + varName + " na: " + varVar;
+                    varSetted.Width = 283;
+                    varSetted.Height = 30;
+                    varSetted.BackColor = Color.FromArgb(255, 255, 255);
+                    varSetted.Location = new Point(488, iteratorButtonY);
+
+                    iteratorButtonY += 30;
+                    varSettedButtons.Add(varSetted);
+
+                    panel1.Controls.Add(varSetted);*/
+                }
+            }
         }
 
         // Obsługa kliknięcia przycisku "setvar"
@@ -232,8 +236,8 @@ namespace WindowsFormsApp2
             }
             else
             {
-                tempVarName = comboBox.SelectedItem.ToString();
-                Console.Write(tempVarName);
+                ComboBoxVar = comboBox.SelectedItem.ToString();
+                Console.Write(ComboBoxVar);
                 buttonSetOn.Enabled = true;
             }
         }
@@ -248,11 +252,10 @@ namespace WindowsFormsApp2
             }
             else
             {
-
-                tempVarName = comboBoxTemp.SelectedItem.ToString();
-                //Console.Write(tempVarName);
-                string[] parts = tempVarName.Split(':');
-                tempVarNameDone = parts[0];
+                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
+                //Console.Write(ComboBoxVar);
+                string[] parts = ComboBoxVar.Split(':');
+                ComboBoxVarName = parts[0];
                 buttonSetOn.Enabled = true;
             }
         }
