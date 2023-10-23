@@ -244,6 +244,7 @@ namespace WindowsFormsApp2
             }
             else
             {
+                
                 ComboBoxVar = comboBox.SelectedItem.ToString();
                 Console.Write(ComboBoxVar);
                 buttonSetOn.Enabled = true;
@@ -379,17 +380,13 @@ namespace WindowsFormsApp2
             
             IfButton.Click += new EventHandler(IfButton_Click);
             comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar);
-            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxIf);
-            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar1);
+            comboBoxIf.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxIf);
+            comboBoxVar1.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar1);
 
-            if (isComboBoxIfValueChanged == false || isComboBoxVarValueChanged == false)
-            {
-                comboBoxVar1.Enabled = false;
-            }
-            else
-            {
-                comboBoxVar1.Enabled = true;
-            }
+            
+            comboBoxVar1.Enabled = false;
+            
+           
             
             ButtonLocationX += 36;
             iteratorButtonY += 30;
@@ -398,6 +395,7 @@ namespace WindowsFormsApp2
         
         private void SelectedIndexChangedIfComboBoxVar(object sender, EventArgs e)
         {
+            Console.Write("TEST1 1");
             ComboBox comboBoxTemp = sender as ComboBox;
             
             if (comboBoxTemp.SelectedItem == null)
@@ -406,6 +404,11 @@ namespace WindowsFormsApp2
             }
             else
             {
+                comboBoxVar.Enabled = true;
+
+                comboBoxVar1.Enabled = true;
+                comboBoxIf.Enabled = true;
+                
                 ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
                 //Console.Write(ComboBoxVar);
                 string[] parts = ComboBoxVar.Split(':');
@@ -419,7 +422,7 @@ namespace WindowsFormsApp2
             ComboBox comboBoxTemp = sender as ComboBox;
             if (comboBoxTemp.SelectedItem == null)
             {
-                isComboBoxIfValueChanged = false;
+                //isComboBoxIfValueChanged = false;
             }
             else
             {
@@ -431,18 +434,11 @@ namespace WindowsFormsApp2
         {
             ComboBox comboBoxTemp = sender as ComboBox;
             
-            if (isComboBoxIfValueChanged == false || isComboBoxVarValueChanged == false)
-            {
-                comboBoxTemp.Enabled = false;
-            }
-            else
-            {
-                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
-                //Console.Write(ComboBoxVar);
-                string[] parts = ComboBoxVar.Split(':');
-                ComboBoxIfVar1Name = parts[0];
-                buttonSetOn.Enabled = true;
-            }
+            comboBoxVar1.Enabled = true;
+            ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
+            string[] parts = ComboBoxVar.Split(':');
+            ComboBoxIfVar1Name = parts[0];
+            buttonSetOn.Enabled = true;
         }
 
         //Obsługa przycisku IfButton - zaznaczenie
