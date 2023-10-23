@@ -1,10 +1,12 @@
 ﻿using System;
+using System.CodeDom;
 using System.Windows.Forms;
 
 namespace WindowsFormsApp2
 {
     public partial class ChooseVar : Form
     {
+        public int numberSetedValue1;
         public ChooseVar()
         {
             InitializeComponent();
@@ -41,7 +43,7 @@ namespace WindowsFormsApp2
         
         private void ChooseNumber_ValueChanged(object sender, EventArgs e)
         {
-            int numberSetedValue1 = (int)ChooseNumber.Value; 
+            numberSetedValue1 = (int)ChooseNumber.Value; 
             ChoosseVarOn.clickedButton.Text = numberSetedValue1.ToString();
         }
 
@@ -52,6 +54,21 @@ namespace WindowsFormsApp2
 
         private void OkChooseVar_Click(object sender, EventArgs e)
         {
+            if (Form1.isButtonPrintSetVarClicked == true)
+            {
+
+                if (ChooseNumber.Enabled == true)
+                {
+                    Form1.codeLinesList.Add("print(" + numberSetedValue1.ToString() + ")");
+                }
+                else if (comboBoxChooseVar.Enabled == true)
+                {
+                    string[] parts = comboBoxChooseVar.SelectedItem.ToString().Split(':');
+                    var tempVarNameDone = parts[0];
+                    
+                    Form1.codeLinesList.Add("print(" + tempVarNameDone as string + ")");
+                }
+            }
             this.Close();
         }
     }

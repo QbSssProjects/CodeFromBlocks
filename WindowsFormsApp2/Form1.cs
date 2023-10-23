@@ -19,7 +19,6 @@ using System.Windows.Forms.VisualStyles;
 
 namespace WindowsFormsApp2
 {
-    
     public partial class Form1 : Form
     {
         // Pola klasy Form1
@@ -49,6 +48,9 @@ namespace WindowsFormsApp2
         private bool isButtonStartClicked = false;
         private bool isIfButtonClicked = false;
         private bool isNewVarButtonClicked = false;
+        public static bool isButtonPrintSetVarClicked;
+        private bool isComboBoxVarValueChanged = false;
+        private bool isComboBoxIfValueChanged = false;
 
         public static int ButtonLocationX = 488;
 
@@ -69,7 +71,6 @@ namespace WindowsFormsApp2
 
         private bool flagVarAccepted = true;
 
-
         public static List<String> codeLinesList = new List<string>();
         
         public static List<ComboBox> comboBoxesList = new List<ComboBox>();
@@ -78,6 +79,13 @@ namespace WindowsFormsApp2
 
         public static String ComboBoxVar;
         public static String ComboBoxVarName;
+        public static String ComboBoxIfVarName;
+        public static String ComboBoxIfIfName;
+        public static String ComboBoxIfVar1Name;
+        
+        ComboBox comboBoxVar = new ComboBox();
+        ComboBox comboBoxVar1 = new ComboBox();
+        ComboBox comboBoxIf = new ComboBox();
         
         // Konstruktor domyślny
         public Form1()
@@ -302,9 +310,6 @@ namespace WindowsFormsApp2
         {
             // Tworzenie nowego przycisku
             Button IfButton = new Button();
-            ComboBox comboBoxVar = new ComboBox();
-            ComboBox comboBoxVar1 = new ComboBox();
-            ComboBox comboBoxIf = new ComboBox();
             TextBox textBoxIf = new TextBox();
             TextBox textBoxThen = new TextBox();
             
@@ -373,11 +378,73 @@ namespace WindowsFormsApp2
             comboBoxIf.DataSource = ifOperators;
             
             IfButton.Click += new EventHandler(IfButton_Click);
+            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar);
+            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxIf);
+            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar1);
 
+            if (isComboBoxIfValueChanged == false || isComboBoxVarValueChanged == false)
+            {
+                comboBoxVar1.Enabled = false;
+            }
+            else
+            {
+                comboBoxVar1.Enabled = true;
+            }
+            
             ButtonLocationX += 36;
             iteratorButtonY += 30;
         }
+
         
+        private void SelectedIndexChangedIfComboBoxVar(object sender, EventArgs e)
+        {
+            ComboBox comboBoxTemp = sender as ComboBox;
+            
+            if (comboBoxTemp.SelectedItem == null)
+            {
+                isComboBoxVarValueChanged = false;
+            }
+            else
+            {
+                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
+                //Console.Write(ComboBoxVar);
+                string[] parts = ComboBoxVar.Split(':');
+                ComboBoxIfVarName = parts[0];
+                buttonSetOn.Enabled = true;
+            }
+        }
+        
+        private void SelectedIndexChangedIfComboBoxIf(object sender, EventArgs e)
+        {
+            ComboBox comboBoxTemp = sender as ComboBox;
+            if (comboBoxTemp.SelectedItem == null)
+            {
+                isComboBoxIfValueChanged = false;
+            }
+            else
+            {
+                ComboBoxIfIfName = comboBoxTemp.SelectedItem.ToString();
+            }
+        }
+        
+        private void SelectedIndexChangedIfComboBoxVar1(object sender, EventArgs e)
+        {
+            ComboBox comboBoxTemp = sender as ComboBox;
+            
+            if (isComboBoxIfValueChanged == false || isComboBoxVarValueChanged == false)
+            {
+                comboBoxTemp.Enabled = false;
+            }
+            else
+            {
+                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
+                //Console.Write(ComboBoxVar);
+                string[] parts = ComboBoxVar.Split(':');
+                ComboBoxIfVar1Name = parts[0];
+                buttonSetOn.Enabled = true;
+            }
+        }
+
         //Obsługa przycisku IfButton - zaznaczenie
         private void IfButton_Click(object sender, EventArgs e)
         {
@@ -729,6 +796,8 @@ namespace WindowsFormsApp2
             
             PrintButton.Click += new EventHandler(PrintButton_Click);
             varButton.Click += new EventHandler(varButton_Click);
+            
+            iteratorButtonY += 30;
         }
         
         private void PrintButton_Click(object sender, EventArgs e)
@@ -744,6 +813,7 @@ namespace WindowsFormsApp2
             ChoosseVarOn.clickedButton = sender as Button;
             Console.Out.WriteLine(index);
             var ChooseForm = new ChooseVar();
+            isButtonPrintSetVarClicked = true;
             ChooseForm.Show();
         }
     }

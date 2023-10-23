@@ -103,6 +103,7 @@ namespace WindowsFormsApp2
             this.Controls.Add(this.ZmiennaRadioBox);
             this.Controls.Add(this.comboBoxChooseVar);
             this.Name = "ChooseVar";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Wybierz Zmienną";
             ((System.ComponentModel.ISupportInitialize)(this.ChooseNumber)).EndInit();
             this.ResumeLayout(false);
