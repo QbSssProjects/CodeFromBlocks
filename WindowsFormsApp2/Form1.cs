@@ -98,6 +98,7 @@ namespace WindowsFormsApp2
         public Form1()
         {
             InitializeComponent();
+            MessageBox.Show("Uwaga! Ta aplikacja jest w wersji rozwojowej i część jej funkcjonalności nie działa poprawnie.");
         }
 
         // Obsługa kliknięcia przycisku "button1" (POCZĄTEK) - zaznaczenie
@@ -397,9 +398,9 @@ namespace WindowsFormsApp2
         
         private void SelectedIndexChangedIfComboBoxVar(object sender, EventArgs e)
         {
-            ComboBox comboBoxTempVar = sender as ComboBox;
+            ComboBox comboBoxIfIf = sender as ComboBox;
 
-            if (comboBoxTempVar.SelectedItem == null)
+            if (comboBoxIfVar.SelectedItem == null)
             {
                 isComboBoxVarValueChanged = false;
             }
@@ -410,7 +411,7 @@ namespace WindowsFormsApp2
                 comboBoxIfVar1.Enabled = true;
                 comboBoxIfIf.Enabled = true;
 
-                comboBoxIfVarValue = comboBoxTempVar.SelectedItem.ToString();
+                comboBoxIfVarValue = comboBoxIfVar.SelectedItem.ToString();
                 string[] parts = comboBoxIfVarValue.Split(':');
                 ComboBoxIfVarName = parts[0];
             }
@@ -418,17 +419,17 @@ namespace WindowsFormsApp2
         
         private void SelectedIndexChangedIfComboBoxIf(object sender, EventArgs e)
         {
-            ComboBox comboBoxTemp = sender as ComboBox;
-            ComboBoxIfIfName = comboBoxTemp.SelectedItem.ToString();
+            ComboBox comboBoxIfIf = sender as ComboBox;
+            ComboBoxIfIfName = comboBoxIfIf.SelectedItem.ToString();
         }
         
         private void SelectedIndexChangedIfComboBoxVar1(object sender, EventArgs e)
         {
-            ComboBox comboBoxTemp = sender as ComboBox;
+            ComboBox comboBoxIfVar1 = sender as ComboBox;
 
             comboBoxIfVar1.Enabled = true;
 
-            comboBoxIfVar1Value = comboBoxTemp.SelectedItem.ToString();
+            comboBoxIfVar1Value = comboBoxIfVar1.SelectedItem.ToString();
 
             string[] parts = comboBoxIfVar1Value.Split(':');
             ComboBoxIfVar1Name = parts[0];
