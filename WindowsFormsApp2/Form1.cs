@@ -82,10 +82,17 @@ namespace WindowsFormsApp2
         public static String ComboBoxIfVarName;
         public static String ComboBoxIfIfName;
         public static String ComboBoxIfVar1Name;
+        public static String ComboBoxIfVar;
+        public static String ComboBoxIfVar1;
         
-        ComboBox comboBoxVar = new ComboBox();
-        ComboBox comboBoxVar1 = new ComboBox();
-        ComboBox comboBoxIf = new ComboBox();
+        ComboBox comboBoxIfVar = new ComboBox();
+        ComboBox comboBoxIfVar1 = new ComboBox();
+        ComboBox comboBoxIfIf = new ComboBox();
+        
+        private string comboBoxIfVarValue;
+        private string comboBoxIfIfValue;
+        private string comboBoxIfVar1Value;
+        private string comboBoxSetValue;
         
         // Konstruktor domyślny
         public Form1()
@@ -254,16 +261,15 @@ namespace WindowsFormsApp2
         private void SelectedIndexChangedSetVar(object sender, EventArgs e)
         {
             ComboBox comboBoxTemp = sender as ComboBox;
-            
+
             if (comboBoxTemp.SelectedItem == null)
             {
                 buttonSetOn.Enabled = false;
             }
             else
             {
-                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
-                //Console.Write(ComboBoxVar);
-                string[] parts = ComboBoxVar.Split(':');
+                comboBoxSetValue = comboBoxTemp.SelectedItem.ToString();
+                string[] parts = comboBoxSetValue.Split(':');
                 ComboBoxVarName = parts[0];
                 buttonSetOn.Enabled = true;
             }
@@ -307,7 +313,7 @@ namespace WindowsFormsApp2
         }
         
         //Obsługa przycisku If (Jeśli)
-        private void If_Click(object sender, EventArgs e)
+        private void If_Click(object sender, EventArgs e)  
         {
             // Tworzenie nowego przycisku
             Button IfButton = new Button();
@@ -336,57 +342,53 @@ namespace WindowsFormsApp2
             textBoxThen.BorderStyle = BorderStyle.None;
             textBoxThen.BackColor = Color.FromArgb(255, 255, 255);
             
-            comboBoxVar.Location = new Point(34, 5);
-            comboBoxIf.Location = new Point(122, 5);
-            comboBoxVar1.Location = new Point(175, 5);
+            comboBoxIfVar.Location = new Point(34, 5);
+            comboBoxIfIf.Location = new Point(122, 5);
+            comboBoxIfVar1.Location = new Point(175, 5);
             
-            comboBoxVar.Click += new EventHandler(comboBox_Click);
-            comboBoxVar1.Click += new EventHandler(comboBox_Click);
+            comboBoxIfVar.Click += new EventHandler(comboBox_Click);
+            comboBoxIfVar1.Click += new EventHandler(comboBox_Click);
             
             // Dodanie przycisku do listy przycisków
             buttons.Add(IfButton);
-            comboBoxes.Add(comboBoxVar);
-            comboBoxes.Add(comboBoxVar1);
-            comboBoxes.Add(comboBoxIf);
+            comboBoxes.Add(comboBoxIfVar);
+            comboBoxes.Add(comboBoxIfVar1);
+            comboBoxes.Add(comboBoxIfIf);
             textBoxesOn.Add(textBoxIf);
             textBoxesOn.Add(textBoxThen);
             
             // Dodanie przycisku do formularza
-            comboBoxVar.Width = 85;
-            comboBoxVar1.Width = 85;
-            comboBoxIf.Width = 50;
+            comboBoxIfVar.Width = 85;
+            comboBoxIfVar1.Width = 85;
+            comboBoxIfIf.Width = 50;
             
             //Dodanie kontrolek do formularza
             panel1.Controls.Add(IfButton);
             IfButton.Controls.Add(textBoxIf); //Jeśli
-            IfButton.Controls.Add(comboBoxVar); //Var1
-            IfButton.Controls.Add(comboBoxIf);  //Warunek
-            IfButton.Controls.Add(comboBoxVar1);//Var2
+            IfButton.Controls.Add(comboBoxIfVar); //Var1
+            IfButton.Controls.Add(comboBoxIfIf);  //Warunek
+            IfButton.Controls.Add(comboBoxIfVar1);//Var2
             IfButton.Controls.Add(textBoxThen); //To: 
-            
             
             IfButton.SendToBack();
             textBoxIf.BringToFront();
-            comboBoxVar.BringToFront();
-            comboBoxIf.BringToFront();
-            comboBoxVar1.BringToFront();
+            comboBoxIfVar.BringToFront();
+            comboBoxIfIf.BringToFront();
+            comboBoxIfVar1.BringToFront();
             textBoxThen.BringToFront();
             
-            comboBoxVar.DataSource = null;
-            comboBoxVar.DataSource = varsTable;
-            comboBoxVar1.DataSource = null;
-            comboBoxVar1.DataSource = varsTable;
-            comboBoxIf.DataSource = ifOperators;
+            comboBoxIfVar.DataSource = null;
+            comboBoxIfVar.DataSource = varsTable;
+            comboBoxIfVar1.DataSource = null;
+            comboBoxIfVar1.DataSource = varsTable;
+            comboBoxIfIf.DataSource = ifOperators;
             
             IfButton.Click += new EventHandler(IfButton_Click);
-            comboBoxVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar);
-            comboBoxIf.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxIf);
-            comboBoxVar1.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar1);
-
+            comboBoxIfVar.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar);
+            comboBoxIfIf.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxIf);
+            comboBoxIfVar1.SelectedIndexChanged += new EventHandler(SelectedIndexChangedIfComboBoxVar1);
             
-            comboBoxVar1.Enabled = false;
-            
-           
+            comboBoxIfVar1.Enabled = false;
             
             ButtonLocationX += 36;
             iteratorButtonY += 30;
@@ -395,50 +397,41 @@ namespace WindowsFormsApp2
         
         private void SelectedIndexChangedIfComboBoxVar(object sender, EventArgs e)
         {
-            Console.Write("TEST1 1");
-            ComboBox comboBoxTemp = sender as ComboBox;
-            
-            if (comboBoxTemp.SelectedItem == null)
+            ComboBox comboBoxTempVar = sender as ComboBox;
+
+            if (comboBoxTempVar.SelectedItem == null)
             {
                 isComboBoxVarValueChanged = false;
             }
             else
             {
-                comboBoxVar.Enabled = true;
+                comboBoxIfVar.Enabled = true;
 
-                comboBoxVar1.Enabled = true;
-                comboBoxIf.Enabled = true;
-                
-                ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
-                //Console.Write(ComboBoxVar);
-                string[] parts = ComboBoxVar.Split(':');
+                comboBoxIfVar1.Enabled = true;
+                comboBoxIfIf.Enabled = true;
+
+                comboBoxIfVarValue = comboBoxTempVar.SelectedItem.ToString();
+                string[] parts = comboBoxIfVarValue.Split(':');
                 ComboBoxIfVarName = parts[0];
-                buttonSetOn.Enabled = true;
             }
         }
         
         private void SelectedIndexChangedIfComboBoxIf(object sender, EventArgs e)
         {
             ComboBox comboBoxTemp = sender as ComboBox;
-            if (comboBoxTemp.SelectedItem == null)
-            {
-                //isComboBoxIfValueChanged = false;
-            }
-            else
-            {
-                ComboBoxIfIfName = comboBoxTemp.SelectedItem.ToString();
-            }
+            ComboBoxIfIfName = comboBoxTemp.SelectedItem.ToString();
         }
         
         private void SelectedIndexChangedIfComboBoxVar1(object sender, EventArgs e)
         {
             ComboBox comboBoxTemp = sender as ComboBox;
-            
-            comboBoxVar1.Enabled = true;
-            ComboBoxVar = comboBoxTemp.SelectedItem.ToString();
-            string[] parts = ComboBoxVar.Split(':');
+
+            comboBoxIfVar1.Enabled = true;
+
+            comboBoxIfVar1Value = comboBoxTemp.SelectedItem.ToString();
+
+            string[] parts = comboBoxIfVar1Value.Split(':');
             ComboBoxIfVar1Name = parts[0];
-            buttonSetOn.Enabled = true;
         }
 
         //Obsługa przycisku IfButton - zaznaczenie
